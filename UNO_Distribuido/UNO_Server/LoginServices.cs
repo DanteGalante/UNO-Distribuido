@@ -9,11 +9,13 @@ using UNO_DB;
 
 namespace UNO_Server
 {
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LoginServices : ILoginServices
     {
         public void IsLogged(int idPlayer)
         {
             bool result = false;
+            
             try
             {
                 using(UNODBEntities db = new UNODBEntities())
@@ -46,15 +48,17 @@ namespace UNO_Server
                         if(player.username == username && player.password == password)
                         {
                             result = true;
+
+                            player.isLogged = true;
                         }
                     }
                 }
+                callback.LoginVerification(result);
             }
             catch
             {
                 //WIP
             }
-            callback.LoginVerification(result);
         }
         ILoginServicesCallback callback
         {
