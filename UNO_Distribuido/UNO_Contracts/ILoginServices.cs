@@ -13,7 +13,7 @@ namespace UNO_Contracts
         [OperationContract]
         void Login(string username, string password); //Hay que cifrar las contraseñas
         [OperationContract]
-        void IsLogged(int idPlayer);
+        void IsLogged(string username, string password);
     }
     
     public interface ILoginServicesCallback

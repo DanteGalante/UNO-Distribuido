@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using UNO_Client.LoginServices;
 
 namespace UNO_Client
@@ -20,7 +21,7 @@ namespace UNO_Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    [CallbackBehavior(UseSynchronizationContext = false)]
+    [CallbackBehavior(UseSynchronizationContext = true)]
     public partial class LoginWindow : Window, ILoginServicesCallback
     {
         public LoginWindow()
@@ -44,12 +45,16 @@ namespace UNO_Client
             {
                 client.Login(tb_Username.Text, pb_Password.Password);
             }
-            catch(System.ServiceModel.EndpointNotFoundException exception)
+            catch (EndpointNotFoundException exception)
             {
                 Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
                 lb_LoginError.Content = "Error en la conexión con la base de datos";
             }
-            
+            catch (TimeoutException exception)
+            {
+                Console.WriteLine("No se pudo realizar la conexion con el servidor \n" + exception);
+                lb_LoginError.Content = "Error en la conexion con la base de datos";
+            }
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
@@ -61,18 +66,26 @@ namespace UNO_Client
         public void LoginVerification(bool result)
         {
             Console.WriteLine("Entro a login verification " + result);
-
-            if(result == true)
+            
+            try
             {
-                //lb_LoginError.Content = "";
+                if (result == true)
+                {
+                    //lb_LoginError.Content = "";
 
-                GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
-                this.Hide();
-                gameMainMenuWindow.ShowDialog();
+                    GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
+                    this.Hide();
+                    gameMainMenuWindow.ShowDialog();
+                }
+                else
+                {
+                    lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
+                }
             }
-            else
+            catch (Exception e)
+
             {
-                //lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
+                Console.WriteLine("Excepcion " + e);
             }
         }
 
