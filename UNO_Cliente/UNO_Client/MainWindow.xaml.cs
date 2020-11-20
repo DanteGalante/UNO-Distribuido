@@ -30,6 +30,7 @@ namespace UNO_Client
             loginWindow.Owner = this;
             this.Hide();
             loginWindow.ShowDialog();
+            this.Close();
         }
 
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)

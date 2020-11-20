@@ -40,8 +40,16 @@ namespace UNO_Client
         {
             InstanceContext context = new InstanceContext(this);
             LoginServicesClient client = new LoginServicesClient(context);
-
-            client.Login(tb_Username.Text, pb_Password.Password);
+            try
+            {
+                client.Login(tb_Username.Text, pb_Password.Password);
+            }
+            catch(System.ServiceModel.EndpointNotFoundException exception)
+            {
+                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                lb_LoginError.Content = "Error en la conexión con la base de datos";
+            }
+            
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
@@ -52,9 +60,11 @@ namespace UNO_Client
 
         public void LoginVerification(bool result)
         {
+            Console.WriteLine("Entro a login verification " + result);
+
             if(result == true)
             {
-                lb_LoginError.Content = "";
+                //lb_LoginError.Content = "";
 
                 GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
                 this.Hide();
@@ -62,7 +72,7 @@ namespace UNO_Client
             }
             else
             {
-                lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
+                //lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
             }
         }
 

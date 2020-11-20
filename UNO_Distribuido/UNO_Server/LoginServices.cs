@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -9,9 +10,10 @@ using UNO_DB;
 
 namespace UNO_Server
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
     public class LoginServices : ILoginServices
     {
+        private readonly ConcurrentDictionary<string, ILoginServicesCallback> collection = new ConcurrentDictionary<string, ILoginServicesCallback>();
         public void IsLogged(int idPlayer)
         {
             bool result = false;
@@ -20,9 +22,9 @@ namespace UNO_Server
             {
                 using(UNODBEntities db = new UNODBEntities())
                 {
-                    foreach (var j in db.Players)
+                    foreach (var player in db.Players)
                     {
-                        if(j.idPlayer == idPlayer)
+                        if(player.idPlayer == idPlayer)
                         {
                             result = true;
                         }
@@ -33,7 +35,7 @@ namespace UNO_Server
             {
                 //WIP
             }
-            callback.IsLoggedResult(result);
+            Callback.IsLoggedResult(result);
         }
 
         public void Login(string username, string password)
@@ -41,31 +43,37 @@ namespace UNO_Server
             bool result = false;
             try
             {
-                using(UNODBEntities db = new UNODBEntities())
+                
+                using (UNODBEntities db = new UNODBEntities())
                 {
-                    foreach(var player in db.Players)
+                    foreach (var player in db.Players)
                     {
-                        if(player.username == username && player.password == password)
+                        Console.WriteLine("Dentro de login " + player.name);
+                        if (player.username == username && player.password == password)
                         {
+                            Console.WriteLine(player.idPlayer + " " + player.name);
+
                             result = true;
 
                             player.isLogged = true;
                         }
                     }
                 }
-                callback.LoginVerification(result);
+                Callback.LoginVerification(result);
             }
-            catch
+            catch(Exception e)
             {
-                //WIP
+                Console.WriteLine("Excepcion \n" + e.Message + "\n" + e.Source + "\n" + e.TargetSite + "\n\n" + e);
             }
         }
-        ILoginServicesCallback callback
+
+        ILoginServicesCallback Callback
         {
             get
             {
                 return OperationContext.Current.GetCallbackChannel<ILoginServicesCallback>();
             }
         }
+        
     }
 }
