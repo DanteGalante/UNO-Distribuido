@@ -18,9 +18,9 @@ namespace UNO_Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
         }
@@ -35,6 +35,12 @@ namespace UNO_Client
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btn_Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Owner.ShowDialog();
+            this.Close();
         }
     }
 }

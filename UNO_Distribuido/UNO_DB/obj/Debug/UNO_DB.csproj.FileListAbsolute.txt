@@ -1,0 +1,12 @@
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\UNO_DB.dll.config
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\UNO_DB.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\UNO_DB.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\EntityFramework.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\EntityFramework.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\obj\Debug\UNO_DB.csprojAssemblyReference.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\obj\Debug\UNO_DB.csproj.CoreCompileInputs.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\obj\Debug\UNO_DB.csproj.CopyComplete
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\obj\Debug\UNO_DB.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\obj\Debug\UNO_DB.pdb

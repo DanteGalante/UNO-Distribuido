@@ -15,3 +15,5 @@ D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Client\obj\Debug\UNO_Client.pdb
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Client\obj\Debug\RegisterWindow.g.cs
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Client\obj\Debug\RegisterWindow.baml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Client\obj\Debug\MainWindow.g.cs
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Client\obj\Debug\MainWindow.baml

@@ -5,27 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="UNODBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Jugador">
+        <EntityType Name="Player">
           <Key>
-            <PropertyRef Name="idJugador" />
+            <PropertyRef Name="idPlayer" />
           </Key>
-          <Property Name="idJugador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreUsuario" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="contraseña" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="fotoPerfil" Type="varbinary" MaxLength="500" />
-          <Property Name="ban" Type="bit" />
-        </EntityType>
-        <EntityType Name="ReporteMalaConducta">
-          <Key>
-            <PropertyRef Name="idReporteMalaConducta" />
-          </Key>
-          <Property Name="idReporteMalaConducta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="razon" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="hora" Type="time" Precision="7" Nullable="false" />
-          <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="idJugador" Type="int" Nullable="false" />
+          <Property Name="idPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastnames" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="avatarImage" Type="varbinary" MaxLength="500" />
+          <Property Name="isBanned" Type="bit" />
+          <Property Name="isLogged" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -37,55 +28,27 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_ReporteMalaConducta_Jugador">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1" />
-          <End Role="ReporteMalaConducta" Type="Self.ReporteMalaConducta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="ReporteMalaConducta">
-              <PropertyRef Name="idJugador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="UNODBModelStoreContainer">
-          <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ReporteMalaConducta" EntityType="Self.ReporteMalaConducta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ReporteMalaConducta_Jugador" Association="Self.FK_ReporteMalaConducta_Jugador">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="ReporteMalaConducta" EntitySet="ReporteMalaConducta" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UNODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Jugador">
+        <EntityType Name="Player">
           <Key>
-            <PropertyRef Name="idJugador" />
+            <PropertyRef Name="idPlayer" />
           </Key>
-          <Property Name="idJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreUsuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fotoPerfil" Type="Binary" MaxLength="500" FixedLength="false" />
-          <Property Name="ban" Type="Boolean" />
-          <NavigationProperty Name="ReporteMalaConductas" Relationship="Self.FK_ReporteMalaConducta_Jugador" FromRole="Jugador" ToRole="ReporteMalaConducta" />
-        </EntityType>
-        <EntityType Name="ReporteMalaConducta">
-          <Key>
-            <PropertyRef Name="idReporteMalaConducta" />
-          </Key>
-          <Property Name="idReporteMalaConducta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="razon" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="idJugador" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Jugador" Relationship="Self.FK_ReporteMalaConducta_Jugador" FromRole="ReporteMalaConducta" ToRole="Jugador" />
+          <Property Name="idPlayer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastnames" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="avatarImage" Type="Binary" MaxLength="500" FixedLength="false" />
+          <Property Name="isBanned" Type="Boolean" />
+          <Property Name="isLogged" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -97,26 +60,9 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_ReporteMalaConducta_Jugador">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1" />
-          <End Role="ReporteMalaConducta" Type="Self.ReporteMalaConducta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="ReporteMalaConducta">
-              <PropertyRef Name="idJugador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="UNODBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Jugadors" EntityType="Self.Jugador" />
-          <EntitySet Name="ReporteMalaConductas" EntityType="Self.ReporteMalaConducta" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK_ReporteMalaConducta_Jugador" Association="Self.FK_ReporteMalaConducta_Jugador">
-            <End Role="Jugador" EntitySet="Jugadors" />
-            <End Role="ReporteMalaConducta" EntitySet="ReporteMalaConductas" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -124,27 +70,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UNODBModelStoreContainer" CdmEntityContainer="UNODBEntities">
-          <EntitySetMapping Name="Jugadors">
-            <EntityTypeMapping TypeName="UNODBModel.Jugador">
-              <MappingFragment StoreEntitySet="Jugador">
-                <ScalarProperty Name="idJugador" ColumnName="idJugador" />
-                <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
-                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="fotoPerfil" ColumnName="fotoPerfil" />
-                <ScalarProperty Name="ban" ColumnName="ban" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReporteMalaConductas">
-            <EntityTypeMapping TypeName="UNODBModel.ReporteMalaConducta">
-              <MappingFragment StoreEntitySet="ReporteMalaConducta">
-                <ScalarProperty Name="idReporteMalaConducta" ColumnName="idReporteMalaConducta" />
-                <ScalarProperty Name="razon" ColumnName="razon" />
-                <ScalarProperty Name="hora" ColumnName="hora" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="UNODBModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="idPlayer" ColumnName="idPlayer" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastnames" ColumnName="lastnames" />
+                <ScalarProperty Name="avatarImage" ColumnName="avatarImage" />
+                <ScalarProperty Name="isBanned" ColumnName="isBanned" />
+                <ScalarProperty Name="isLogged" ColumnName="isLogged" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
