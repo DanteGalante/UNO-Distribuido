@@ -24,15 +24,15 @@ namespace UNO_Client
             InitializeComponent();
         }
 
-        private void btn_Play_Click(object sender, RoutedEventArgs e)
+        private void Btn_Play_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Owner = this;
+            this.Hide();
             loginWindow.ShowDialog();
-            this.Close();
         }
 
-        private void btn_Exit_Click(object sender, RoutedEventArgs e)
+        private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

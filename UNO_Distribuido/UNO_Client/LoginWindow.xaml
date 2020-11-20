@@ -18,6 +18,7 @@
         <Button x:Name="btn_Register" Content="Registrarse" HorizontalAlignment="Left" Margin="178,285,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Register_Click"/>
         <Button x:Name="btn_Login" Content="Ingresar" HorizontalAlignment="Left" Margin="313,285,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Login_Click"/>
         <Button x:Name="btn_PasswordRecovery" Content="Recuperar contraseña" HorizontalAlignment="Left" Margin="258,188,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button x:Name="btn_Back" Content="Regresar" HorizontalAlignment="Left" Margin="313,369,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
 
     </Grid>
 </Window>

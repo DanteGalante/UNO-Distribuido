@@ -29,6 +29,7 @@ namespace UNO_Client
         {
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Owner = this;
+            this.Hide();
             registerWindow.ShowDialog();
         }
 
@@ -37,10 +38,10 @@ namespace UNO_Client
 
         }
 
-        private void btn_Back_Click(object sender, RoutedEventArgs e)
+        private void Btn_Back_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
             this.Owner.ShowDialog();
-            this.Close();
         }
     }
 }
