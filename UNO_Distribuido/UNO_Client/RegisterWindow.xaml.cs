@@ -28,5 +28,11 @@ namespace UNO_Client
         {
 
         }
+
+        private void Btn_Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            this.Owner.ShowDialog();
+        }
     }
 }
