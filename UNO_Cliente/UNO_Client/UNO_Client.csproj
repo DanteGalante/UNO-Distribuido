@@ -57,7 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\LoginServices\Reference.cs">
+    <Compile Include="Connected Services\LoginServicesProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -114,13 +114,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\LoginServices\item.xsd">
+    <None Include="Connected Services\LoginServicesProxy\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\LoginServices\item1.xsd">
+    <None Include="Connected Services\LoginServicesProxy\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\LoginServices\LoginServices.wsdl" />
+    <None Include="Connected Services\LoginServicesProxy\LoginServices.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,19 +133,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\LoginServices\" />
+    <WCFMetadataStorage Include="Connected Services\LoginServicesProxy\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\LoginServices\item.disco" />
+    <None Include="Connected Services\LoginServicesProxy\item.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\LoginServices\configuration91.svcinfo" />
+    <None Include="Connected Services\LoginServicesProxy\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\LoginServices\configuration.svcinfo" />
+    <None Include="Connected Services\LoginServicesProxy\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\LoginServices\Reference.svcmap">
+    <None Include="Connected Services\LoginServicesProxy\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

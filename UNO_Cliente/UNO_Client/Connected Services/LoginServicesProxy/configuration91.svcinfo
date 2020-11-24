@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="O1da++utjJqte6bM7G3jRgcO5FJfdntlGchap/JXJhw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="F5hM11XUABdvUq1U0cCYwtdvSx3JxQ1VT2TXNzn3Tjc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILoginServices">
       <properties>
@@ -121,10 +121,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_ILoginServices" contract="LoginServices.ILoginServices" bindingType="netTcpBinding" address="net.tcp://localhost:124/UNO_Server" bindingConfiguration="NetTcpBinding_ILoginServices">
+    <endpoint name="NetTcpBinding_ILoginServices" contract="LoginServicesProxy.ILoginServices" bindingType="netTcpBinding" address="net.tcp://localhost:4101/UNO_Server" bindingConfiguration="NetTcpBinding_ILoginServices">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:124/UNO_Server</serializedValue>
+          <serializedValue>net.tcp://localhost:4101/UNO_Server</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -136,7 +136,7 @@
           <serializedValue>NetTcpBinding_ILoginServices</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>LoginServices.ILoginServices</serializedValue>
+          <serializedValue>LoginServicesProxy.ILoginServices</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

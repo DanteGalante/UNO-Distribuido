@@ -10,7 +10,7 @@ using UNO_DB;
 
 namespace UNO_Server
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LoginServices : ILoginServices
     {
         //private readonly ConcurrentDictionary<string, ILoginServicesCallback> collection = new ConcurrentDictionary<string, ILoginServicesCallback>();
@@ -22,7 +22,7 @@ namespace UNO_Server
             {
                 using (UNODBEntities db = new UNODBEntities())
                 {
-                    player = db.Players.Single(a => a.username == username && a.password == password && a.isLogged == true);
+                    player = db.Players.Where(a => a.username == username && a.password == password && a.isLogged == true).First();
 
                     if (player != null)
                     {
@@ -62,13 +62,20 @@ namespace UNO_Server
         {
             bool result = false;
             Player player = null;
-
+            
             try
             {
-                Console.WriteLine("Dentro de login ");
                 using (UNODBEntities db = new UNODBEntities())
                 {
-                    player = db.Players.Single(a => a.username == username && a.password == password);
+                    try
+                    {
+                        player = db.Players.Where(a => a.username == username && a.password == password).First();
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        Console.WriteLine("Error: no se encontraron jugadores con estos " + e);
+                    }
+                    
 
                     if (player != null)
                     {
@@ -77,13 +84,11 @@ namespace UNO_Server
                         player.isLogged = true;
 
                         db.SaveChanges();
-                    }else if(player == null)
+
+                        Console.WriteLine($"Jugador {player.username} acaba de conectarse" );
+                    }else if (player == null)
                     {
                         result = false;
-
-                        player.isLogged = false;
-
-                        db.SaveChanges();
                     }
                     /*foreach (var player in db.Players)
                     {
@@ -100,14 +105,14 @@ namespace UNO_Server
                         }
                     }*/
                 }
-
-                Callback.LoginVerification(result);
             }
             catch(Exception e)
             {
                 Console.WriteLine("Excepcion \n" + e.Message + "\n" + e.Source + "\n" + e.TargetSite + "\n\n" + e);
-                throw e;
+                //throw e;
             }
+            Console.WriteLine(result);
+            Callback.LoginVerification(result);
         }
 
         ILoginServicesCallback Callback

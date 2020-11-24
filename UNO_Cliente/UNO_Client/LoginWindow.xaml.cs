@@ -14,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using UNO_Client.LoginServices;
+using UNO_Client.LoginServicesProxy;
 
 namespace UNO_Client
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    [CallbackBehavior(UseSynchronizationContext = true)]
+    [CallbackBehavior(UseSynchronizationContext = false)]
     public partial class LoginWindow : Window, ILoginServicesCallback
     {
         public LoginWindow()
@@ -41,20 +41,20 @@ namespace UNO_Client
         {
             InstanceContext context = new InstanceContext(this);
             LoginServicesClient client = new LoginServicesClient(context);
-            try
-            {
+            //try
+            //{
                 client.Login(tb_Username.Text, pb_Password.Password);
-            }
-            catch (EndpointNotFoundException exception)
-            {
-                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
-                lb_LoginError.Content = "Error en la conexión con la base de datos";
-            }
-            catch (TimeoutException exception)
-            {
-                Console.WriteLine("No se pudo realizar la conexion con el servidor \n" + exception);
-                lb_LoginError.Content = "Error en la conexion con la base de datos";
-            }
+            //}
+            //catch (EndpointNotFoundException exception)
+            //{
+                //Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                //lb_LoginError.Content = "Error en la conexión con el servidor";
+            //}
+            //catch (TimeoutException exception)
+            //{
+                //Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
+                //lb_LoginError.Content = "Error en la conexion con el servidor";
+            //}
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
@@ -67,25 +67,23 @@ namespace UNO_Client
         {
             Console.WriteLine("Entro a login verification " + result);
             
-            try
+            if (result == true)
             {
-                if (result == true)
+                this.Dispatcher.Invoke(() =>
                 {
-                    //lb_LoginError.Content = "";
-
+                    lb_LoginError.Content = "";
                     GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
                     this.Hide();
                     gameMainMenuWindow.ShowDialog();
-                }
-                else
+                });
+            }
+            else
+            {
+                //this.Dispatcher.Invoke(ModifyLabels(lb_LoginError, "Nombre de usuario o contraseña incorrectos") =>)
+                this.Dispatcher.Invoke(() =>
                 {
                     lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
-                }
-            }
-            catch (Exception e)
-
-            {
-                Console.WriteLine("Excepcion " + e);
+                });
             }
         }
 

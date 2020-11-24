@@ -8,24 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UNO_Client.LoginServices {
+namespace UNO_Client.LoginServicesProxy {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LoginServices.ILoginServices", CallbackContract=typeof(UNO_Client.LoginServices.ILoginServicesCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LoginServicesProxy.ILoginServices", CallbackContract=typeof(UNO_Client.LoginServicesProxy.ILoginServicesCallback))]
     public interface ILoginServices {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginServices/Login", ReplyAction="http://tempuri.org/ILoginServices/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginServices/Login")]
         void Login(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginServices/Login", ReplyAction="http://tempuri.org/ILoginServices/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginServices/Login")]
         System.Threading.Tasks.Task LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginServices/IsLogged", ReplyAction="http://tempuri.org/ILoginServices/IsLoggedResponse")]
-        void IsLogged(int idPlayer);
+        void IsLogged(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginServices/IsLogged", ReplyAction="http://tempuri.org/ILoginServices/IsLoggedResponse")]
-        System.Threading.Tasks.Task IsLoggedAsync(int idPlayer);
+        System.Threading.Tasks.Task IsLoggedAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -39,12 +39,12 @@ namespace UNO_Client.LoginServices {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ILoginServicesChannel : UNO_Client.LoginServices.ILoginServices, System.ServiceModel.IClientChannel {
+    public interface ILoginServicesChannel : UNO_Client.LoginServicesProxy.ILoginServices, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LoginServicesClient : System.ServiceModel.DuplexClientBase<UNO_Client.LoginServices.ILoginServices>, UNO_Client.LoginServices.ILoginServices {
+    public partial class LoginServicesClient : System.ServiceModel.DuplexClientBase<UNO_Client.LoginServicesProxy.ILoginServices>, UNO_Client.LoginServicesProxy.ILoginServices {
         
         public LoginServicesClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -74,12 +74,12 @@ namespace UNO_Client.LoginServices {
             return base.Channel.LoginAsync(username, password);
         }
         
-        public void IsLogged(int idPlayer) {
-            base.Channel.IsLogged(idPlayer);
+        public void IsLogged(string username, string password) {
+            base.Channel.IsLogged(username, password);
         }
         
-        public System.Threading.Tasks.Task IsLoggedAsync(int idPlayer) {
-            return base.Channel.IsLoggedAsync(idPlayer);
+        public System.Threading.Tasks.Task IsLoggedAsync(string username, string password) {
+            return base.Channel.IsLoggedAsync(username, password);
         }
     }
 }
