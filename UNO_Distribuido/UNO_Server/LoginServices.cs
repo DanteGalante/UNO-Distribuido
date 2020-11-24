@@ -90,20 +90,6 @@ namespace UNO_Server
                     {
                         result = false;
                     }
-                    /*foreach (var player in db.Players)
-                    {
-                        Console.WriteLine(player.name);
-                        if (player.username == username && player.password == password)
-                        {
-                            Console.WriteLine(player.idPlayer + " " + player.name);
-
-                            result = true;
-
-                            player.isLogged = true;
-
-                            db.SaveChanges();
-                        }
-                    }*/
                 }
             }
             catch(Exception e)
