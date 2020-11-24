@@ -31,15 +31,12 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:123/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:123/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:4100/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:4100/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILoginServices_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
-  </wsdl:message>
-  <wsdl:message name="ILoginServices_Login_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:message name="ILoginServices_IsLogged_InputMessage">
     <wsdl:part name="parameters" element="tns:IsLogged" />
@@ -62,7 +59,6 @@
   <wsdl:portType name="ILoginServices">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginServices/Login" message="tns:ILoginServices_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILoginServices/LoginResponse" message="tns:ILoginServices_Login_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsLogged">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginServices/IsLogged" message="tns:ILoginServices_IsLogged_InputMessage" />
@@ -85,9 +81,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsLogged">
       <soap12:operation soapAction="http://tempuri.org/ILoginServices/IsLogged" style="document" />
@@ -119,9 +112,9 @@
   </wsdl:binding>
   <wsdl:service name="LoginServices">
     <wsdl:port name="NetTcpBinding_ILoginServices" binding="tns:NetTcpBinding_ILoginServices">
-      <soap12:address location="net.tcp://localhost:124/UNO_Server" />
+      <soap12:address location="net.tcp://localhost:4101/UNO_Server" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:124/UNO_Server</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:4101/UNO_Server</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>DESKTOP-JQOMREJ\olver</Upn>
         </Identity>

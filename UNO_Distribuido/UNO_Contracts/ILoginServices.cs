@@ -10,7 +10,8 @@ namespace UNO_Contracts
     [ServiceContract(CallbackContract = typeof(ILoginServicesCallback))]
     public interface ILoginServices
     {
-        [OperationContract]
+
+        [OperationContract(IsOneWay = true)]
         void Login(string username, string password); //Hay que cifrar las contraseñas
         [OperationContract]
         void IsLogged(string username, string password);
