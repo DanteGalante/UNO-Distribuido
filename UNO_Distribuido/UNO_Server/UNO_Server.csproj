@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginServices.cs" />
+    <Compile Include="PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameExceptions\GameExceptions.csproj">
+      <Project>{AFF8C5AE-A544-4FA2-9074-17E35C20460F}</Project>
+      <Name>GameExceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UNO_Contracts\UNO_Contracts.csproj">
       <Project>{0DF7239F-249D-426B-9FE1-DF582997770F}</Project>
       <Name>UNO_Contracts</Name>
