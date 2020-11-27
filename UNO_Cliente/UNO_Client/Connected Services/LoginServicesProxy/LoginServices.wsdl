@@ -33,6 +33,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:4100/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:4100/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:4100/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UNO_DB" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILoginServices_Login_InputMessage">
@@ -50,12 +51,6 @@
   <wsdl:message name="ILoginServices_LoginVerification_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:LoginVerificationResponse" />
   </wsdl:message>
-  <wsdl:message name="ILoginServices_IsLoggedResult_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:IsLoggedResult" />
-  </wsdl:message>
-  <wsdl:message name="ILoginServices_IsLoggedResult_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:IsLoggedResultResponse" />
-  </wsdl:message>
   <wsdl:portType name="ILoginServices">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginServices/Login" message="tns:ILoginServices_Login_InputMessage" />
@@ -67,10 +62,6 @@
     <wsdl:operation name="LoginVerification">
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginServices/LoginVerification" message="tns:ILoginServices_LoginVerification_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginServices/LoginVerificationResponse" message="tns:ILoginServices_LoginVerification_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="IsLoggedResult">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILoginServices/IsLoggedResult" message="tns:ILoginServices_IsLoggedResult_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILoginServices/IsLoggedResultResponse" message="tns:ILoginServices_IsLoggedResult_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ILoginServices" type="tns:ILoginServices">
@@ -93,15 +84,6 @@
     </wsdl:operation>
     <wsdl:operation name="LoginVerification">
       <soap12:operation soapAction="http://tempuri.org/ILoginServices/LoginVerification" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsLoggedResult">
-      <soap12:operation soapAction="http://tempuri.org/ILoginServices/IsLoggedResult" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

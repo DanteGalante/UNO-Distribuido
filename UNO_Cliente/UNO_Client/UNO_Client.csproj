@@ -120,6 +120,9 @@
     <None Include="Connected Services\LoginServicesProxy\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\LoginServicesProxy\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\LoginServicesProxy\LoginServices.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

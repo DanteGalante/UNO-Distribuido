@@ -24,6 +24,7 @@ namespace UNO_Client
     [CallbackBehavior(UseSynchronizationContext = false)]
     public partial class LoginWindow : Window, ILoginServicesCallback
     {
+        private bool userIsLogged;
         public LoginWindow()
         {
             InitializeComponent();
@@ -41,20 +42,20 @@ namespace UNO_Client
         {
             InstanceContext context = new InstanceContext(this);
             LoginServicesClient client = new LoginServicesClient(context);
-            //try
-            //{
+            try
+            {
                 client.Login(tb_Username.Text, pb_Password.Password);
-            //}
-            //catch (EndpointNotFoundException exception)
-            //{
-                //Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
-                //lb_LoginError.Content = "Error en la conexión con el servidor";
-            //}
-            //catch (TimeoutException exception)
-            //{
-                //Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
-                //lb_LoginError.Content = "Error en la conexion con el servidor";
-            //}
+            }
+            catch (EndpointNotFoundException exception)
+            {
+                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                lb_LoginError.Content = "Error en la conexión con el servidor";
+            }
+            catch (TimeoutException exception)
+            {
+                Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
+                lb_LoginError.Content = "Error en la conexion con el servidor";
+            }
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
@@ -71,10 +72,17 @@ namespace UNO_Client
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    lb_LoginError.Content = "";
-                    GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
-                    this.Hide();
-                    gameMainMenuWindow.ShowDialog();
+                    if (!userIsLogged)
+                    {
+                        lb_LoginError.Content = "";
+                        GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
+                        this.Hide();
+                        gameMainMenuWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        lb_LoginError.Content = "El usuario tiene una sesión iniciada";
+                    }
                 });
             }
             else
@@ -89,7 +97,10 @@ namespace UNO_Client
 
         public void IsLoggedResult(bool result)
         {
-            throw new NotImplementedException();
+            this.Dispatcher.Invoke(() =>
+            {
+                userIsLogged = result;
+            });
         }
     }
 }

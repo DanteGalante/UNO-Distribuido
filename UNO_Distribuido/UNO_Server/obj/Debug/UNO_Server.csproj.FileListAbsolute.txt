@@ -15,3 +15,6 @@ D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\UNO_Server.csproj.CopyComplete
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\UNO_Server.exe
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\UNO_Server.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\GameExceptions.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\GameExceptions.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\es-MX\GameExceptions.resources.dll

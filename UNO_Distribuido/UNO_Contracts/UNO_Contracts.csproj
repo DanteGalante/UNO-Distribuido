@@ -44,7 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILoginServices.cs" />
+    <Compile Include="IPlayerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UNO_DB\UNO_DB.csproj">
+      <Project>{80902BE2-CB47-4B0C-841A-7637DE3716E8}</Project>
+      <Name>UNO_DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
