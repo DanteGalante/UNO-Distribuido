@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d42d31398f89438cbfbe29c707dbb018" Name="Diagram1">
-        <EntityTypeShape EntityType="UNODBModel.Player" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UNODBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.Player" Width="1.5" PointX="2" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.sysdiagram" Width="1.5" PointX="4.625" PointY="3.625" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

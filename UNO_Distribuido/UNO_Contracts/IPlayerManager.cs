@@ -21,6 +21,7 @@ namespace UNO_Contracts
         void ModifyPlayer(Player player,Player newPlayer);
         [OperationContract]
         void GetPlayers();
+        
     }
 
     public interface IPlayerManagerCallback
@@ -33,5 +34,7 @@ namespace UNO_Contracts
         void ModifyPlayerResponse(bool response);
         [OperationContract]
         void GetPlayersResponse(List<Player> players);
+        [OperationContract]
+        void EmailVerification(string email);
     }
 }
