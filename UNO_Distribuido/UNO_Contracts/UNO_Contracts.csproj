@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ILoginServices.cs" />
     <Compile Include="IPlayerManager.cs" />
+    <Compile Include="IRegistrationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

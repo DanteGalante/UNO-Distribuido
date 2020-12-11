@@ -14,7 +14,7 @@ using UNO_DB;
 namespace UNO_Server
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public class LoginServices : ILoginServices
+    public class UNOServices : ILoginServices
     {
         private ResourceManager resourceManager = new ResourceManager("ExceptionMessages.es-MX", Assembly.GetExecutingAssembly());
         public bool IsLogged(Player player)
