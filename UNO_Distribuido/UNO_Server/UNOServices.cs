@@ -137,7 +137,7 @@ namespace UNO_Server
 
             return playerSearched;
         }
-        //Work in progress
+
         public void RegisterPlayer(Player newPlayer)
         {
             bool result = false;
@@ -150,6 +150,12 @@ namespace UNO_Server
                 newPlayer.verificationToken = token;
 
                 new EmailVerification().SendEmail(newPlayer.email, token);
+            }
+
+            using(UNODBEntities db = new UNODBEntities())
+            {
+                db.Players.Add(newPlayer);
+                db.SaveChanges();
             }
 
             PlayerCallback.VerifyPlayerRegistration(result);
