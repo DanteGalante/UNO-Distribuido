@@ -1,0 +1,17 @@
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\UtilitiesTests.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\UtilitiesTests.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Utilities.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Utilities.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Utilities.dll.config
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.csprojAssemblyReference.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.csproj.CoreCompileInputs.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.csproj.CopyComplete
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.pdb

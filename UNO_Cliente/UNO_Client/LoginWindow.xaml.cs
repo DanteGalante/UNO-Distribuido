@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using UNO_Client.LoginServicesProxy;
+using UNO_Client.Proxy;
 
 namespace UNO_Client
 {
@@ -41,20 +41,25 @@ namespace UNO_Client
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
             InstanceContext context = new InstanceContext(this);
-            LoginServicesClient client = new LoginServicesClient(context);
+            Proxy.LoginServicesClient client = new Proxy.LoginServicesClient(context);
             try
             {
                 client.Login(tb_Username.Text, pb_Password.Password);
             }
-            catch (EndpointNotFoundException exception)
+            catch(EndpointNotFoundException exception)
             {
                 Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
                 lb_LoginError.Content = "Error en la conexión con el servidor";
             }
-            catch (TimeoutException exception)
+            catch(TimeoutException exception)
             {
                 Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
                 lb_LoginError.Content = "Error en la conexion con el servidor";
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine("El usuario ya esta logeado \n" + exception);
+                lb_LoginError.Content = "El usuario ya esta se encuentra logeado en el sistema";
             }
         }
 
@@ -87,20 +92,11 @@ namespace UNO_Client
             }
             else
             {
-                //this.Dispatcher.Invoke(ModifyLabels(lb_LoginError, "Nombre de usuario o contraseña incorrectos") =>)
                 this.Dispatcher.Invoke(() =>
                 {
                     lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
                 });
             }
-        }
-
-        public void IsLoggedResult(bool result)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                userIsLogged = result;
-            });
         }
     }
 }

@@ -1,5 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="UNODBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BanReport">
+    <Key>
+      <PropertyRef Name="idBanReport" />
+    </Key>
+    <Property Name="idBanReport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reason" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hour" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FK_idPlayer" Type="Int32" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_BanReport_Player" FromRole="BanReport" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="FriendList">
+    <Key>
+      <PropertyRef Name="FK_idPlayer" />
+      <PropertyRef Name="FK_idFriend" />
+    </Key>
+    <Property Name="FK_idPlayer" Type="Int32" Nullable="false" />
+    <Property Name="FK_idFriend" Type="Int32" Nullable="false" />
+    <Property Name="requestAccepted" Type="Boolean" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_FriendList_FK_Player" FromRole="FriendList" ToRole="Player" />
+    <NavigationProperty Name="Player1" Relationship="Self.FK_FriendList_Player" FromRole="FriendList" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="GameMode">
+    <Key>
+      <PropertyRef Name="idGameModes" />
+    </Key>
+    <Property Name="idGameModes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lobbies" Relationship="Self.FK_Lobby_GameModes" FromRole="GameModes" ToRole="Lobby" />
+  </EntityType>
+  <EntityType Name="Lobby">
+    <Key>
+      <PropertyRef Name="idLobby" />
+    </Key>
+    <Property Name="idLobby" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lobbyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="matchDuration" Type="Int32" Nullable="false" />
+    <Property Name="isPrivate" Type="Boolean" Nullable="false" />
+    <Property Name="FK_idGameMode" Type="Int32" />
+    <NavigationProperty Name="GameMode" Relationship="Self.FK_Lobby_GameModes" FromRole="Lobby" ToRole="GameModes" />
+    <NavigationProperty Name="Matches" Relationship="Self.FK_Match_Lobby" FromRole="Lobby" ToRole="Match" />
+  </EntityType>
+  <EntityType Name="Match">
+    <Key>
+      <PropertyRef Name="FK_idPlayer" />
+      <PropertyRef Name="FK_idLobby" />
+    </Key>
+    <Property Name="FK_idPlayer" Type="Int32" Nullable="false" />
+    <Property Name="FK_idLobby" Type="Int32" Nullable="false" />
+    <Property Name="score" Type="Int32" />
+    <Property Name="position" Type="Int32" />
+    <NavigationProperty Name="Lobby" Relationship="Self.FK_Match_Lobby" FromRole="Match" ToRole="Lobby" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_Match_Player" FromRole="Match" ToRole="Player" />
+  </EntityType>
   <EntityType Name="Player">
     <Key>
       <PropertyRef Name="idPlayer" />
@@ -10,21 +64,118 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="lastnames" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="avatarImage" Type="Binary" MaxLength="500" FixedLength="false" />
-    <Property Name="isBanned" Type="Boolean" />
-    <Property Name="isLogged" Type="Boolean" />
+    <Property Name="isBanned" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BanReports" Relationship="Self.FK_BanReport_Player" FromRole="Player" ToRole="BanReport" />
+    <NavigationProperty Name="FriendLists" Relationship="Self.FK_FriendList_FK_Player" FromRole="Player" ToRole="FriendList" />
+    <NavigationProperty Name="FriendLists1" Relationship="Self.FK_FriendList_Player" FromRole="Player" ToRole="FriendList" />
+    <NavigationProperty Name="Matches" Relationship="Self.FK_Match_Player" FromRole="Player" ToRole="Match" />
+    <Property Name="verificationToken" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="isLogged" Type="Boolean" Nullable="false" />
+    <Property Name="isVerified" Type="Boolean" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
+  <Association Name="FK_BanReport_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+    <End Role="BanReport" Type="Self.BanReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="idPlayer" />
+      </Principal>
+      <Dependent Role="BanReport">
+        <PropertyRef Name="FK_idPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendList_FK_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="idPlayer" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="FK_idFriend" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendList_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="idPlayer" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="FK_idPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lobby_GameModes">
+    <End Role="GameModes" Type="Self.GameMode" Multiplicity="0..1" />
+    <End Role="Lobby" Type="Self.Lobby" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameModes">
+        <PropertyRef Name="idGameModes" />
+      </Principal>
+      <Dependent Role="Lobby">
+        <PropertyRef Name="FK_idGameMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Match_Lobby">
+    <End Role="Lobby" Type="Self.Lobby" Multiplicity="1" />
+    <End Role="Match" Type="Self.Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lobby">
+        <PropertyRef Name="idLobby" />
+      </Principal>
+      <Dependent Role="Match">
+        <PropertyRef Name="FK_idLobby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Match_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="Match" Type="Self.Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="idPlayer" />
+      </Principal>
+      <Dependent Role="Match">
+        <PropertyRef Name="FK_idPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="UNODBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BanReports" EntityType="Self.BanReport" />
+    <EntitySet Name="FriendLists" EntityType="Self.FriendList" />
+    <EntitySet Name="GameModes" EntityType="Self.GameMode" />
+    <EntitySet Name="Lobbies" EntityType="Self.Lobby" />
+    <EntitySet Name="Matches" EntityType="Self.Match" />
     <EntitySet Name="Players" EntityType="Self.Player" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_BanReport_Player" Association="Self.FK_BanReport_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="BanReport" EntitySet="BanReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendList_FK_Player" Association="Self.FK_FriendList_FK_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="FriendList" EntitySet="FriendLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendList_Player" Association="Self.FK_FriendList_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="FriendList" EntitySet="FriendLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lobby_GameModes" Association="Self.FK_Lobby_GameModes">
+      <End Role="GameModes" EntitySet="GameModes" />
+      <End Role="Lobby" EntitySet="Lobbies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Match_Lobby" Association="Self.FK_Match_Lobby">
+      <End Role="Lobby" EntitySet="Lobbies" />
+      <End Role="Match" EntitySet="Matches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Match_Player" Association="Self.FK_Match_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Match" EntitySet="Matches" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
