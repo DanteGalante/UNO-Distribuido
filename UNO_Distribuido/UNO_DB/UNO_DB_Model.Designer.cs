@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\UNO_DB_Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_DB\UNO_DB_MODEL.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

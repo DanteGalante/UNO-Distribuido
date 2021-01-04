@@ -25,6 +25,11 @@ namespace UNO_DB
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BanReport> BanReports { get; set; }
+        public virtual DbSet<FriendList> FriendLists { get; set; }
+        public virtual DbSet<GameMode> GameModes { get; set; }
+        public virtual DbSet<Lobby> Lobbies { get; set; }
+        public virtual DbSet<Match> Matches { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }

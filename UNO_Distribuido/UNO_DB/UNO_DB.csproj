@@ -51,54 +51,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BanReport.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FriendList.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GameMode.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lobby.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Match.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs">
-      <DependentUpon>UNO_DB_Model.tt</DependentUpon>
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>UNO_DB_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UNO_DB_Model.Context.cs">
+    <Compile Include="UNO_DB_MODEL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UNO_DB_Model.Context.tt</DependentUpon>
+      <DependentUpon>UNO_DB_MODEL.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="UNO_DB_Model.cs">
+    <Compile Include="UNO_DB_MODEL.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UNO_DB_Model.tt</DependentUpon>
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="UNO_DB_Model.Designer.cs">
+    <Compile Include="UNO_DB_MODEL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UNO_DB_Model.edmx</DependentUpon>
+      <DependentUpon>UNO_DB_MODEL.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="UNO_DB_Model.edmx">
+    <EntityDeploy Include="UNO_DB_MODEL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UNO_DB_Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>UNO_DB_MODEL.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="UNO_DB_Model.edmx.diagram">
-      <DependentUpon>UNO_DB_Model.edmx</DependentUpon>
+    <None Include="UNO_DB_MODEL.edmx.diagram">
+      <DependentUpon>UNO_DB_MODEL.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="UNO_DB_Model.Context.tt">
+    <Content Include="UNO_DB_MODEL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UNO_DB_Model.edmx</DependentUpon>
-      <LastGenOutput>UNO_DB_Model.Context.cs</LastGenOutput>
+      <DependentUpon>UNO_DB_MODEL.edmx</DependentUpon>
+      <LastGenOutput>UNO_DB_MODEL.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="UNO_DB_Model.tt">
+    <Content Include="UNO_DB_MODEL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UNO_DB_Model.edmx</DependentUpon>
-      <LastGenOutput>UNO_DB_Model.cs</LastGenOutput>
+      <DependentUpon>UNO_DB_MODEL.edmx</DependentUpon>
+      <LastGenOutput>UNO_DB_MODEL.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

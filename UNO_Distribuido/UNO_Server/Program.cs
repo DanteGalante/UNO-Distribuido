@@ -11,7 +11,7 @@ namespace UNO_Server
     {
         static void Main(string[] args)
         {
-            ServiceHost host = new ServiceHost(typeof(LoginServices));
+            ServiceHost host = new ServiceHost(typeof(UNO_Server.UNOServices));
             host.Open();
             Console.WriteLine("Server is running");
             Console.ReadLine();

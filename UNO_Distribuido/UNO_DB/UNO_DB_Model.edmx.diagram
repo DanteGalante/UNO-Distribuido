@@ -4,9 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d42d31398f89438cbfbe29c707dbb018" Name="Diagram1">
-        <EntityTypeShape EntityType="UNODBModel.Player" Width="1.5" PointX="2" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UNODBModel.sysdiagram" Width="1.5" PointX="4.625" PointY="3.625" IsExpanded="true" />
+      <Diagram DiagramId="fd58c9b1ffa142b49c361af9b63450d3" Name="Diagram1">
+        <EntityTypeShape EntityType="UNODBModel.BanReport" Width="1.5" PointX="0.875" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.FriendList" Width="1.5" PointX="6.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.GameMode" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.Lobby" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.Match" Width="1.5" PointX="1.875" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UNODBModel.Player" Width="1.5" PointX="3.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="UNODBModel.FK_BanReport_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="UNODBModel.FK_FriendList_FK_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="UNODBModel.FK_FriendList_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="UNODBModel.FK_Lobby_GameModes" ManuallyRouted="false" />
+        <AssociationConnector Association="UNODBModel.FK_Match_Lobby" ManuallyRouted="false" />
+        <AssociationConnector Association="UNODBModel.FK_Match_Player" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="UNODBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
