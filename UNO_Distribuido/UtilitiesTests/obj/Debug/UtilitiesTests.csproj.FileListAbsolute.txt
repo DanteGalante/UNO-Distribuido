@@ -15,3 +15,14 @@ D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.csproj.CopyComplete
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.dll
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\obj\Debug\UtilitiesTests.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\UtilitiesTests.dll.config
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\BCrypt.Net-Next.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Memory.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Numerics.Vectors.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Buffers.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\BCrypt.Net-Next.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Memory.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Numerics.Vectors.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UtilitiesTests\bin\Debug\System.Buffers.xml

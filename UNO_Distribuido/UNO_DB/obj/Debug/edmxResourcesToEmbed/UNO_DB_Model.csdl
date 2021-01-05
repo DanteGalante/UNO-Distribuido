@@ -70,7 +70,7 @@
     <NavigationProperty Name="FriendLists1" Relationship="Self.FK_FriendList_Player" FromRole="Player" ToRole="FriendList" />
     <NavigationProperty Name="Matches" Relationship="Self.FK_Match_Player" FromRole="Player" ToRole="Match" />
     <Property Name="verificationToken" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="isLogged" Type="Boolean" Nullable="false" />
+    <Property Name="isLogged" Nullable="false" Type="Boolean" />
     <Property Name="isVerified" Type="Boolean" Nullable="false" />
     <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -177,5 +177,16 @@
       <End Role="Player" EntitySet="Players" />
       <End Role="Match" EntitySet="Matches" />
     </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="UNODBModel.sysdiagram" />
   </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

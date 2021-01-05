@@ -62,6 +62,16 @@
     <Property Name="isLogged" Type="bit" Nullable="false" />
     <Property Name="isVerified" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <Association Name="FK_BanReport_Player">
     <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
     <End Role="BanReport" Type="Self.BanReport" Multiplicity="*" />
@@ -141,6 +151,7 @@
     <EntitySet Name="Lobby" EntityType="Self.Lobby" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_BanReport_Player" Association="Self.FK_BanReport_Player">
       <End Role="Player" EntitySet="Player" />
       <End Role="BanReport" EntitySet="BanReport" />

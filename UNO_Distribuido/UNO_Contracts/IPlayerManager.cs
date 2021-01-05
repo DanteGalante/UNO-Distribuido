@@ -39,6 +39,5 @@ namespace UNO_Contracts
         void GetPlayersResponse(List<Player> players);
         [OperationContract]
         void VerifyPlayerRegistration(bool response);
-        [OperationContract]
     }
 }

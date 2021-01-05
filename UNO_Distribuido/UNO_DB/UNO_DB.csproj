@@ -70,6 +70,9 @@
       <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>UNO_DB_MODEL.tt</DependentUpon>
+    </Compile>
     <Compile Include="UNO_DB_MODEL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

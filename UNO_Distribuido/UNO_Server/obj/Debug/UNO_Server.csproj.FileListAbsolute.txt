@@ -28,3 +28,16 @@ D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\UNO_Server.Resources.Email.es-MX.resources
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\UNO_Server.csproj.GenerateResource.cache
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\obj\Debug\es-MX\UNO_Server.resources.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\BCrypt.Net-Next.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Buffers.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Memory.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Numerics.Vectors.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\Utilities.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\Utilities.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\Utilities.dll.config
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\BCrypt.Net-Next.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Buffers.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Memory.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Numerics.Vectors.xml
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\UNO_Server\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

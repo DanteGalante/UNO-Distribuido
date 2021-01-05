@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace UNO_Server.Utilities
 {
@@ -29,22 +26,20 @@ namespace UNO_Server.Utilities
 
         public string EncryptPassword(string txtToEncrypt)
         {
-            string salt = BCrypt.Net.BCrypt.GenerateSalt();
-            string txtEncrypted = BCrypt.Net.BCrypt.HashPassword(txtToEncrypt, salt);
+            string txtEncrypted = BCrypt.Net.BCrypt.HashPassword(txtToEncrypt);
 
             return txtEncrypted;
         }
-
 
         public bool VerifyPassword(string passwordToVerify, string password)
         {
             bool result = false;
 
-            result = BCrypt.Net.BCrypt.EnhancedVerify(passwordToVerify, password);
+            result = BCrypt.Net.BCrypt.Verify(passwordToVerify, password);
 
             return result;
         }
-
+        /*
         [Obsolete]
         public byte[] EncryptAes(string txtToEncrypt)
         {
@@ -110,5 +105,6 @@ namespace UNO_Server.Utilities
 
             return txtDecrypted;
         }
+        */
     }
 }
