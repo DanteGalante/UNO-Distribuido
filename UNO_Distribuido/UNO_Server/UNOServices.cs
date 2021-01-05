@@ -152,11 +152,7 @@ namespace UNO_Server
                 new EmailVerification().SendEmail(newPlayer.email, token);
             }
 
-            using(UNODBEntities db = new UNODBEntities())
-            {
-                db.Players.Add(newPlayer);
-                db.SaveChanges();
-            }
+            result = AddNewPlayer(newPlayer);
 
             PlayerCallback.VerifyPlayerRegistration(result);
         }
