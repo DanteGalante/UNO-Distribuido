@@ -13,12 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UNO_Client.Proxy;
+using UNO_Server.Utilities;
 
 namespace UNO_Client
 {
     /// <summary>
     /// Interaction logic for RegisterWindow.xaml
     /// </summary>
+    [CallbackBehavior(UseSynchronizationContext = false)]
     public partial class RegisterWindow : Window, IPlayerManagerCallback
     {
         public RegisterWindow()
@@ -26,23 +28,38 @@ namespace UNO_Client
             InitializeComponent();
         }
 
+        //Work in progress
         private void Btn_RegisterNewUser_Click(object sender, RoutedEventArgs e)
         {
             InstanceContext instanceContext = new InstanceContext(this);
             Proxy.PlayerManagerClient client = new PlayerManagerClient(instanceContext);
-
+            DataManager dataManager = new DataManager();
+            
             Player newPlayer = new Player();
             newPlayer.username = tb_Username.Text;
-            //newPlayer.password = tb_
-
+            newPlayer.password = dataManager.EncryptPassword(pb_Password.Password);
+            newPlayer.name = tb_Name.Text;
+            newPlayer.lastnames = tb_LastName.Text;
+            //newPlayer.avatarImage =
+            newPlayer.isBanned = false;
+            newPlayer.verificationToken = "";
+            newPlayer.isLogged = false;
+            newPlayer.isVerified = false;
+            newPlayer.email = tb_Email.Text;
 
             try
             {
-                //client.AddNewPlayer());
+                client.RegisterPlayer(newPlayer);
             }
-            catch
+            catch(EndpointNotFoundException exception)
             {
-
+                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                lb_RegistrationError.Content = "Error en la conexión con el servidor";
+            }
+            catch(TimeoutException exception)
+            {
+                Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
+                lb_RegistrationError.Content = "Error en la conexion con el servidor";
             }
         }
 
@@ -50,11 +67,6 @@ namespace UNO_Client
         {
             this.Hide();
             this.Owner.ShowDialog();
-        }
-
-        public void VerifyPlayerAddition(bool response)
-        {
-            throw new NotImplementedException();
         }
 
         public void VerifyPlayerDeletion(bool response)
@@ -74,7 +86,16 @@ namespace UNO_Client
 
         public void VerifyPlayerRegistration(bool response)
         {
-            throw new NotImplementedException();
+            if(response == true)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    lb_RegistrationError.Content = "";
+                    VerificationWindow verificationWindow = new VerificationWindow();
+                    this.Hide();
+                    verificationWindow.ShowDialog();
+                });
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -105,6 +126,11 @@ namespace UNO_Client
                 pb_Password.Password = tb_Password.Text;
                 tb_Password.Text = "";
             }
+        }
+
+        private void btn_LoadImage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -13,16 +13,24 @@
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="122,142,0,0" VerticalAlignment="Top"/>
         <Label Content="Nombre(s)" HorizontalAlignment="Left" Margin="126,190,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellidos" HorizontalAlignment="Left" Margin="133,243,0,0" VerticalAlignment="Top"/>
-        <Label Content="Avatar" HorizontalAlignment="Left" Margin="148,295,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_Username" HorizontalAlignment="Left" Height="23" Margin="197,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Avatar" HorizontalAlignment="Left" Margin="148,324,0,0" VerticalAlignment="Top"/>
+        <Label Content="Correo electronico" HorizontalAlignment="Left" Margin="84,286,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_Username" HorizontalAlignment="Left" Height="23" Margin="197,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Password" HorizontalAlignment="Left" Height="23" Margin="197,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="pb_Password" HorizontalAlignment="Left" Margin="197,145,0,0" VerticalAlignment="Top" Height="23" Width="120"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="322,145,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="197,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tb_LastName" HorizontalAlignment="Left" Height="23" Margin="197,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_LoadImage" Content="Cargar imagen" HorizontalAlignment="Left" Margin="197,301,0,0" VerticalAlignment="Top" Width="117"/>
+        <TextBox x:Name="tb_Email" HorizontalAlignment="Left" Height="23" Margin="197,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Button x:Name="btn_LoadImage" Content="Cargar imagen" HorizontalAlignment="Left" Margin="197,330,0,0" VerticalAlignment="Top" Width="117" Click="btn_LoadImage_Click"/>
         <Button x:Name="btn_RegisterNewUser" Content="Registrar" HorizontalAlignment="Left" Margin="287,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_RegisterNewUser_Click"/>
         <Button x:Name="btn_Back" Content="Regresar" HorizontalAlignment="Left" Margin="117,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
-        <PasswordBox x:Name="pb_Password" HorizontalAlignment="Left" Margin="197,145,0,0" VerticalAlignment="Top" Height="23" Width="120"/>
-        <TextBox x:Name="tb_Password" HorizontalAlignment="Left" Height="23" Margin="197,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="322,145,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-
+        <Label x:Name="lb_RegistrationError" Content="" HorizontalAlignment="Left" Margin="93,67,0,0" VerticalAlignment="Top" Width="294" Background="#00000000" Foreground="Red"/>
+        <Label Content="Los campos&#xD;&#xA;señalados con un&#xD;&#xA;asterisco son &#xD;&#xA;obligatorios" HorizontalAlignment="Left" Margin="336,216,0,0" VerticalAlignment="Top" Height="79" Width="105"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="105,193,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="105,246,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="63,289,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="101,145,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="58,96,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
     </Grid>
 </Window>

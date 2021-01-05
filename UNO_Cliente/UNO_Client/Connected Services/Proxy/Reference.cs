@@ -938,17 +938,17 @@ namespace UNO_Client.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/SearchPlayer", ReplyAction="http://tempuri.org/IPlayerManager/SearchPlayerResponse")]
         System.Threading.Tasks.Task<UNO_Client.Proxy.Player> SearchPlayerAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/VerifyEmailExistence", ReplyAction="http://tempuri.org/IPlayerManager/VerifyEmailExistenceResponse")]
-        bool VerifyEmailExistence(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/EmailAlreadyExist", ReplyAction="http://tempuri.org/IPlayerManager/EmailAlreadyExistResponse")]
+        bool EmailAlreadyExist(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/VerifyEmailExistence", ReplyAction="http://tempuri.org/IPlayerManager/VerifyEmailExistenceResponse")]
-        System.Threading.Tasks.Task<bool> VerifyEmailExistenceAsync(string email);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddNewPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddNewPlayerResponse")]
-        void AddNewPlayer(UNO_Client.Proxy.Player newPlayer);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/EmailAlreadyExist", ReplyAction="http://tempuri.org/IPlayerManager/EmailAlreadyExistResponse")]
+        System.Threading.Tasks.Task<bool> EmailAlreadyExistAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddNewPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddNewPlayerResponse")]
-        System.Threading.Tasks.Task AddNewPlayerAsync(UNO_Client.Proxy.Player newPlayer);
+        bool AddNewPlayer(UNO_Client.Proxy.Player newPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddNewPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddNewPlayerResponse")]
+        System.Threading.Tasks.Task<bool> AddNewPlayerAsync(UNO_Client.Proxy.Player newPlayer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/DeletePlayer", ReplyAction="http://tempuri.org/IPlayerManager/DeletePlayerResponse")]
         void DeletePlayer(UNO_Client.Proxy.Player player);
@@ -977,9 +977,6 @@ namespace UNO_Client.Proxy {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IPlayerManagerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/VerifyPlayerAddition", ReplyAction="http://tempuri.org/IPlayerManager/VerifyPlayerAdditionResponse")]
-        void VerifyPlayerAddition(bool response);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/VerifyPlayerDeletion", ReplyAction="http://tempuri.org/IPlayerManager/VerifyPlayerDeletionResponse")]
         void VerifyPlayerDeletion(bool response);
@@ -1030,19 +1027,19 @@ namespace UNO_Client.Proxy {
             return base.Channel.SearchPlayerAsync(username);
         }
         
-        public bool VerifyEmailExistence(string email) {
-            return base.Channel.VerifyEmailExistence(email);
+        public bool EmailAlreadyExist(string email) {
+            return base.Channel.EmailAlreadyExist(email);
         }
         
-        public System.Threading.Tasks.Task<bool> VerifyEmailExistenceAsync(string email) {
-            return base.Channel.VerifyEmailExistenceAsync(email);
+        public System.Threading.Tasks.Task<bool> EmailAlreadyExistAsync(string email) {
+            return base.Channel.EmailAlreadyExistAsync(email);
         }
         
-        public void AddNewPlayer(UNO_Client.Proxy.Player newPlayer) {
-            base.Channel.AddNewPlayer(newPlayer);
+        public bool AddNewPlayer(UNO_Client.Proxy.Player newPlayer) {
+            return base.Channel.AddNewPlayer(newPlayer);
         }
         
-        public System.Threading.Tasks.Task AddNewPlayerAsync(UNO_Client.Proxy.Player newPlayer) {
+        public System.Threading.Tasks.Task<bool> AddNewPlayerAsync(UNO_Client.Proxy.Player newPlayer) {
             return base.Channel.AddNewPlayerAsync(newPlayer);
         }
         
