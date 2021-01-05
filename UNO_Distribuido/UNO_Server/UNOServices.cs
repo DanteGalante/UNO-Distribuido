@@ -21,7 +21,7 @@ namespace UNO_Server
         //Player manager methods
 
 
-        public void AddNewPlayer(Player newPlayer)
+        public bool AddNewPlayer(Player newPlayer)
         {
             Player playerAdded = null;
             bool response = false;
@@ -47,7 +47,7 @@ namespace UNO_Server
                 response = false;
             }
 
-            PlayerCallback.VerifyPlayerAddition(response);
+            return response;
         }
 
         public void DeletePlayer(Player player)
