@@ -16,7 +16,7 @@ namespace UNO_Contracts
         [OperationContract]
         bool EmailAlreadyExist(string email);
         [OperationContract]
-        void AddNewPlayer(Player newPlayer);
+        bool AddNewPlayer(Player newPlayer);
         [OperationContract]
         void DeletePlayer(Player player);
         [OperationContract]
@@ -29,8 +29,6 @@ namespace UNO_Contracts
 
     public interface IPlayerManagerCallback
     {
-        [OperationContract]
-        void VerifyPlayerAddition(bool response);
         [OperationContract]
         void VerifyPlayerDeletion(bool response);
         [OperationContract]
