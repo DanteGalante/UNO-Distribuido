@@ -49,17 +49,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerifyEmailExistence">
+  <xs:element name="EmailAlreadyExist">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerifyEmailExistenceResponse">
+  <xs:element name="EmailAlreadyExistResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="VerifyEmailExistenceResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EmailAlreadyExistResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,7 +72,9 @@
   </xs:element>
   <xs:element name="AddNewPlayerResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddNewPlayerResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeletePlayer">
@@ -118,18 +120,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="RegisterPlayerResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VerifyPlayerAddition">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="response" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VerifyPlayerAdditionResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
