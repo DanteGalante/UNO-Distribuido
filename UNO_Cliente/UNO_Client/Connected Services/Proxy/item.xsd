@@ -26,7 +26,7 @@
   <xs:element name="LoginVerification">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="result" type="xs:boolean" />
+        <xs:element minOccurs="0" name="result" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,17 +49,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EmailAlreadyExist">
+  <xs:element name="PlayerAlreadyExist">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EmailAlreadyExistResponse">
+  <xs:element name="PlayerAlreadyExistResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EmailAlreadyExistResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="PlayerAlreadyExistResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,7 +87,9 @@
   </xs:element>
   <xs:element name="DeletePlayerResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeletePlayerResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyPlayer">
@@ -99,7 +102,9 @@
   </xs:element>
   <xs:element name="ModifyPlayerResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModifyPlayerResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllPlayers">
@@ -119,39 +124,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegisterPlayerResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VerifyPlayerDeletion">
+  <xs:element name="CheckPlayerVerification">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="response" type="xs:boolean" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UNO_DB" minOccurs="0" name="player" nillable="true" type="q8:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerifyPlayerDeletionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="VerifyPlayerModification">
+  <xs:element name="CheckPlayerVerificationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="response" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CheckPlayerVerificationResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerifyPlayerModificationResponse">
+  <xs:element name="VerifyPlayer">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyPlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VerifyPlayerResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetPlayersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UNO_DB" minOccurs="0" name="players" nillable="true" type="q8:ArrayOfPlayer" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UNO_DB" minOccurs="0" name="players" nillable="true" type="q9:ArrayOfPlayer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -163,7 +167,8 @@
   <xs:element name="VerifyPlayerRegistration">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="response" type="xs:boolean" />
+        <xs:element minOccurs="0" name="response" type="xs:int" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

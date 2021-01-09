@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UNO_Client.Proxy;
-using UNO_Server.Utilities;
 
 namespace UNO_Client
 {
@@ -33,11 +21,10 @@ namespace UNO_Client
         {
             InstanceContext instanceContext = new InstanceContext(this);
             Proxy.PlayerManagerClient client = new PlayerManagerClient(instanceContext);
-            DataManager dataManager = new DataManager();
-            
+
             Player newPlayer = new Player();
             newPlayer.username = tb_Username.Text;
-            newPlayer.password = dataManager.EncryptPassword(pb_Password.Password);
+            newPlayer.password = pb_Password.Password;
             newPlayer.name = tb_Name.Text;
             newPlayer.lastnames = tb_LastName.Text;
             //newPlayer.avatarImage =
@@ -69,23 +56,59 @@ namespace UNO_Client
             this.Owner.ShowDialog();
         }
 
-        public void VerifyPlayerDeletion(bool response)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void VerifyPlayerModification(bool response)
-        {
-            throw new NotImplementedException();
-        }
-
         public void GetPlayersResponse(Player[] players)
         {
             throw new NotImplementedException();
         }
 
-        public void VerifyPlayerRegistration(bool response)
+        public void VerifyPlayerRegistration(int response, string username)
         {
+            VerificationWindow verificationWindow = null;
+
+            switch (response)
+            {
+                case 1:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_RegistrationError.Content = "";
+                        verificationWindow = new VerificationWindow(username);
+                        verificationWindow.Owner = this;
+                        this.Hide();
+                        verificationWindow.ShowDialog();
+                    });
+                    break;
+                case 2:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_RegistrationError.Content = "El jugador ya esta registrado en el sistema";
+                    });
+                    break;
+                case 3:
+                    //Cuando llega al dispatcher se traba por alguna razon
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_RegistrationError.Content = "";
+                        verificationWindow = new VerificationWindow(username);
+                        verificationWindow.Owner = this;
+                        this.Hide();
+                        verificationWindow.ShowDialog();
+                    });
+                    break;
+                case 4:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_RegistrationError.Content = "El correo electronico introducido no esta disponible";
+                    });
+                    break;
+                case 5:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_RegistrationError.Content = "El nombre de usuario introducido no esta disponible";
+                    });
+                    break;
+            }
+
+            /*
             if(response == true)
             {
                 this.Dispatcher.Invoke(() =>
@@ -96,17 +119,7 @@ namespace UNO_Client
                     verificationWindow.ShowDialog();
                 });
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine(pb_Password.PasswordChar);
-
-            if(pb_Password.PasswordChar == '\0')
-            {
-                pb_Password.PasswordChar = '●';
-            }
-            pb_Password.PasswordChar = '\0';
+            */
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

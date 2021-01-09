@@ -86,11 +86,11 @@
   <wsdl:message name="IPlayerManager_SearchPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchPlayerResponse" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_EmailAlreadyExist_InputMessage">
-    <wsdl:part name="parameters" element="tns:EmailAlreadyExist" />
+  <wsdl:message name="IPlayerManager_PlayerAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerAlreadyExist" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_EmailAlreadyExist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EmailAlreadyExistResponse" />
+  <wsdl:message name="IPlayerManager_PlayerAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerAlreadyExistResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_AddNewPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddNewPlayer" />
@@ -119,20 +119,17 @@
   <wsdl:message name="IPlayerManager_RegisterPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterPlayer" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_RegisterPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterPlayerResponse" />
+  <wsdl:message name="IPlayerManager_CheckPlayerVerification_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPlayerVerification" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_VerifyPlayerDeletion_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerDeletion" />
+  <wsdl:message name="IPlayerManager_CheckPlayerVerification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPlayerVerificationResponse" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_VerifyPlayerDeletion_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerDeletionResponse" />
+  <wsdl:message name="IPlayerManager_VerifyPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPlayer" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_VerifyPlayerModification_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerModification" />
-  </wsdl:message>
-  <wsdl:message name="IPlayerManager_VerifyPlayerModification_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerModificationResponse" />
+  <wsdl:message name="IPlayerManager_VerifyPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPlayerResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPlayersResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersResponse" />
@@ -164,9 +161,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/SearchPlayer" message="tns:IPlayerManager_SearchPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/SearchPlayerResponse" message="tns:IPlayerManager_SearchPlayer_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EmailAlreadyExist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/EmailAlreadyExist" message="tns:IPlayerManager_EmailAlreadyExist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/EmailAlreadyExistResponse" message="tns:IPlayerManager_EmailAlreadyExist_OutputMessage" />
+    <wsdl:operation name="PlayerAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/PlayerAlreadyExist" message="tns:IPlayerManager_PlayerAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/PlayerAlreadyExistResponse" message="tns:IPlayerManager_PlayerAlreadyExist_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddNewPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddNewPlayer" message="tns:IPlayerManager_AddNewPlayer_InputMessage" />
@@ -186,15 +183,14 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/RegisterPlayer" message="tns:IPlayerManager_RegisterPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/RegisterPlayerResponse" message="tns:IPlayerManager_RegisterPlayer_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerDeletion">
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayerDeletion" message="tns:IPlayerManager_VerifyPlayerDeletion_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayerDeletionResponse" message="tns:IPlayerManager_VerifyPlayerDeletion_InputCallbackMessage" />
+    <wsdl:operation name="CheckPlayerVerification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/CheckPlayerVerification" message="tns:IPlayerManager_CheckPlayerVerification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/CheckPlayerVerificationResponse" message="tns:IPlayerManager_CheckPlayerVerification_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerModification">
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayerModification" message="tns:IPlayerManager_VerifyPlayerModification_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayerModificationResponse" message="tns:IPlayerManager_VerifyPlayerModification_InputCallbackMessage" />
+    <wsdl:operation name="VerifyPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayer" message="tns:IPlayerManager_VerifyPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayerResponse" message="tns:IPlayerManager_VerifyPlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlayersResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayersResponse" message="tns:IPlayerManager_GetPlayersResponse_OutputCallbackMessage" />
@@ -245,8 +241,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EmailAlreadyExist">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/EmailAlreadyExist" style="document" />
+    <wsdl:operation name="PlayerAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/PlayerAlreadyExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -295,12 +291,9 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerDeletion">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPlayerDeletion" style="document" />
+    <wsdl:operation name="CheckPlayerVerification">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/CheckPlayerVerification" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -308,8 +301,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerModification">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPlayerModification" style="document" />
+    <wsdl:operation name="VerifyPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

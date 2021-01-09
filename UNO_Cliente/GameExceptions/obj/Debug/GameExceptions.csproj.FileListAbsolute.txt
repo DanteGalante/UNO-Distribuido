@@ -1,0 +1,10 @@
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\bin\Debug\GameExceptions.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\bin\Debug\GameExceptions.pdb
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\bin\Debug\es-MX\GameExceptions.resources.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.csprojAssemblyReference.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.Resources.ExceptionMessages.es-MX.resources
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.csproj.GenerateResource.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.csproj.CoreCompileInputs.cache
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\es-MX\GameExceptions.resources.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.dll
+D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Distribuido\GameExceptions\obj\Debug\GameExceptions.pdb
