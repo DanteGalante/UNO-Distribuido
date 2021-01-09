@@ -24,7 +24,6 @@ namespace UNO_Client
     [CallbackBehavior(UseSynchronizationContext = false)]
     public partial class LoginWindow : Window, ILoginServicesCallback
     {
-        private bool userIsLogged;
         public LoginWindow()
         {
             InitializeComponent();
@@ -56,11 +55,6 @@ namespace UNO_Client
                 Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
                 lb_LoginError.Content = "Error en la conexion con el servidor";
             }
-            catch(Exception exception)
-            {
-                Console.WriteLine("El usuario ya esta logeado \n" + exception);
-                lb_LoginError.Content = "El usuario ya esta se encuentra logeado en el sistema";
-            }
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
@@ -69,11 +63,43 @@ namespace UNO_Client
             this.Owner.ShowDialog();
         }
 
-        public void LoginVerification(bool result)
+        public void LoginVerification(int result)
         {
             Console.WriteLine("Entro a login verification " + result);
+
+            switch(result)
+            {
+                case 1:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_LoginError.Content = "";
+                        GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
+                        this.Hide();
+                        gameMainMenuWindow.ShowDialog();
+                    });
+                    break;
+                case 2:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_LoginError.Content = "La contrasenia o el nombre de usuario son incorrectos";
+                    });
+                    break;
+                case 3:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_LoginError.Content = "El jugador ya tiene sesion iniciada";
+                    });
+                    break;
+                case 4:
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        lb_LoginError.Content = "El jugador no se ha verificado";
+                    });
+                    break;
+            }
             
-            if (result == true)
+            /*
+            if(result == true)
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -97,6 +123,7 @@ namespace UNO_Client
                     lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
                 });
             }
+            */
         }
     }
 }
