@@ -34,9 +34,6 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.2.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.2\lib\net472\BCrypt.Net-Next.dll</HintPath>
     </Reference>
-    <Reference Include="CryptHash.Net, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CryptHash.Net.3.6.0\lib\netstandard2.0\CryptHash.Net.dll</HintPath>
-    </Reference>
     <Reference Include="Konscious.Security.Cryptography.Argon2, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Konscious.Security.Cryptography.Argon2.1.2.1\lib\net46\Konscious.Security.Cryptography.Argon2.dll</HintPath>
     </Reference>

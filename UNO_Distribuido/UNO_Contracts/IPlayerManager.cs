@@ -14,28 +14,28 @@ namespace UNO_Contracts
         [OperationContract]
         Player SearchPlayer(string username);
         [OperationContract]
-        bool EmailAlreadyExist(string email);
+        int PlayerAlreadyExist(string username, string email);
         [OperationContract]
         bool AddNewPlayer(Player newPlayer);
         [OperationContract]
-        void DeletePlayer(Player player);
+        bool DeletePlayer(Player player);
         [OperationContract]
-        void ModifyPlayer(Player player, Player newPlayer);
+        bool ModifyPlayer(Player player, Player newPlayer);
         [OperationContract]
         void GetAllPlayers();
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void RegisterPlayer(Player newPlayer);
+        [OperationContract]
+        bool CheckPlayerVerification(Player player);
+        [OperationContract]
+        bool VerifyPlayer(string username);
     }
 
     public interface IPlayerManagerCallback
     {
         [OperationContract]
-        void VerifyPlayerDeletion(bool response);
-        [OperationContract]
-        void VerifyPlayerModification(bool response);
-        [OperationContract]
         void GetPlayersResponse(List<Player> players);
         [OperationContract]
-        void VerifyPlayerRegistration(bool response);
+        void VerifyPlayerRegistration(int response, string username);
     }
 }

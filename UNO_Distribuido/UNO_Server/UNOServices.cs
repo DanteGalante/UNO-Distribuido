@@ -1,14 +1,9 @@
-﻿using BCrypt.Net;
-using GameExceptions;
-using System;
-using System.Collections.Concurrent;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using UNO_Contracts;
 using UNO_DB;
 using UNO_Server.Utilities;
@@ -19,8 +14,6 @@ namespace UNO_Server
     public class UNOServices : ILoginServices, IPlayerManager
     {
         //Player manager methods
-
-
         public bool AddNewPlayer(Player newPlayer)
         {
             Player playerAdded = null;
@@ -42,7 +35,8 @@ namespace UNO_Server
             if (playerAdded != null)
             {
                 response = true;
-            } else if (playerAdded == null)
+            }
+            else if (playerAdded == null)
             {
                 response = false;
             }
@@ -50,7 +44,7 @@ namespace UNO_Server
             return response;
         }
 
-        public void DeletePlayer(Player player)
+        public bool DeletePlayer(Player player)
         {
             Player playerDeleted = null;
             bool response = false;
@@ -77,7 +71,7 @@ namespace UNO_Server
                 response = false;
             }
 
-            PlayerCallback.VerifyPlayerDeletion(response);
+            return response;
         }
 
         public void GetAllPlayers()
@@ -98,25 +92,27 @@ namespace UNO_Server
             PlayerCallback.GetPlayersResponse(players);
         }
 
-        public void ModifyPlayer(Player player, Player newPlayer)
+        public bool ModifyPlayer(Player player, Player newPlayer)
         {
             bool result = false;
             Player playerSearched = null;
 
             playerSearched = SearchPlayer(player.username);
 
-            playerSearched.username = newPlayer.username;
-            playerSearched.password = newPlayer.password;
-            playerSearched.name = newPlayer.name;
-            playerSearched.lastnames = newPlayer.lastnames;
-            playerSearched.avatarImage = newPlayer.avatarImage;
-
             using (UNODBEntities db = new UNODBEntities())
             {
+                playerSearched.username = newPlayer.username;
+                playerSearched.password = newPlayer.password;
+                playerSearched.verificationToken = newPlayer.verificationToken;
+                playerSearched.name = newPlayer.name;
+                playerSearched.lastnames = newPlayer.lastnames;
+                playerSearched.avatarImage = newPlayer.avatarImage;
+
                 db.SaveChanges();
+                result = true;
             }
 
-            PlayerCallback.VerifyPlayerModification(result);
+            return result;
         }
 
         public Player SearchPlayer(string username)
@@ -125,9 +121,9 @@ namespace UNO_Server
 
             try
             {
-                using(UNODBEntities db = new UNODBEntities())
+                using (UNODBEntities db = new UNODBEntities())
                 {
-                    playerSearched = db.Players.Where(a => a.username == username).FirstOrDefault();
+                    playerSearched = db.Players.SingleOrDefault(a => a.username == username);
                 }
             }
             catch (Exception e)
@@ -140,43 +136,88 @@ namespace UNO_Server
 
         public void RegisterPlayer(Player newPlayer)
         {
-            bool result = false;
+            int result = 0;
             string token = "";
-
-            if(!EmailAlreadyExist(newPlayer.email))
-            {
-                token = new DataManager().GenerateVerificationToken();
-
-                newPlayer.verificationToken = token;
-
-                new EmailVerification().SendEmail(newPlayer.email, token);
-            }
-
-            result = AddNewPlayer(newPlayer);
-
-            PlayerCallback.VerifyPlayerRegistration(result);
-        }
-
-        public bool EmailAlreadyExist(string email)
-        {
-            bool result = false;
-            Player player = null;
-
+            const int PLAYER_REGISTERED = 1, PLAYER_ALREADY_REGISTERED = 2, UNVERIFIED_PLAYER = 3, UNAVAILABLE_EMAIL = 4, UNAVAILABLE_USERNAME = 5;
+            const int PLAYER_DOESNT_EXIST = 1, REPEATED_EMAIL = 2, REPEATED_USERNAME = 3, PLAYER_REPEATED = 4;
+            
             try
             {
-                using(UNODBEntities db = new UNODBEntities())
+                int playerExistence = PlayerAlreadyExist(newPlayer.username, newPlayer.email);
+                if (playerExistence == PLAYER_DOESNT_EXIST)
                 {
-                    player = db.Players.Where(a => a.email == email).FirstOrDefault();
+                    token = new DataManager().GenerateVerificationToken();
+
+                    newPlayer.verificationToken = token;
+                    newPlayer.password = new DataManager().EncryptPassword(newPlayer.password);
+
+                    new EmailVerification().SendEmail(newPlayer.email, token);
+
+                    if (AddNewPlayer(newPlayer))
+                    {
+                        result = PLAYER_REGISTERED;
+                    }
+                }
+                else if (playerExistence == PLAYER_REPEATED)
+                {
+                    if (CheckPlayerVerification(newPlayer))
+                    {
+                        result = PLAYER_ALREADY_REGISTERED;
+                    }
+                    else
+                    {
+                        result = UNVERIFIED_PLAYER;
+
+                        token = new DataManager().GenerateVerificationToken();
+
+                        new EmailVerification().SendEmail(newPlayer.email, token);
+
+                        ChangePlayerToken(newPlayer.username, token);
+                    }
+                }
+                else if (playerExistence == REPEATED_EMAIL)
+                {
+                    result = UNAVAILABLE_EMAIL;
+                }
+                else if (playerExistence == REPEATED_USERNAME)
+                {
+                    result = UNAVAILABLE_USERNAME;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
 
-            if(player != null)
+            PlayerCallback.VerifyPlayerRegistration(result, newPlayer.username);
+        }
+        public int PlayerAlreadyExist(string username, string email)
+        {
+            const int PLAYER_DOESNT_EXIST = 1, REPEATED_EMAIL = 2, REPEATED_USERNAME = 3, PLAYER_REPEATED = 4;
+            int result = PLAYER_DOESNT_EXIST;
+            Player player = null;
+
+            try
             {
-                result = true;
+                using (UNODBEntities db = new UNODBEntities())
+                {
+                    player = db.Players.SingleOrDefault(a => a.email == email || a.username == username);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            if (player.email == email && player.username == username)
+            {
+                result = PLAYER_REPEATED;
+            }else if (player.username == username)
+            {
+                result = REPEATED_USERNAME;
+            }else if (player.email == email)
+            {
+                result = REPEATED_EMAIL;
             }
 
             return result;
@@ -189,25 +230,83 @@ namespace UNO_Server
 
             try
             {
-                using(UNODBEntities db = new UNODBEntities())
+                using (UNODBEntities db = new UNODBEntities())
                 {
                     player.password = hashedPassword;
 
                     db.SaveChanges();
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 throw exception;
             }
 
             return true;
         }
+        
+        public bool CheckPlayerVerification(Player player)
+        {
+            bool result = false;
+
+            result = player.isVerified;
+
+            return result;
+        }
+
+        public bool VerifyPlayer(string username)
+        {
+            bool result = false;
+            Player playerToVerify = null;
+
+            try
+            {
+                using (UNODBEntities db = new UNODBEntities())
+                {
+                    playerToVerify = SearchPlayer(username);
+                    if (playerToVerify != null)
+                    {
+                        playerToVerify.isVerified = true;
+                        result = true;
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
+
+        public bool ChangePlayerToken(string username, string newToken)
+        {
+            bool result = false;
+
+            using (UNODBEntities db = new UNODBEntities())
+            {
+                Player player = SearchPlayer(username);
+
+                Console.WriteLine("Old verification token: " + player.verificationToken);
+
+                player.verificationToken = newToken;
+
+                Console.WriteLine("New verification token: " + player.verificationToken);
+
+                db.SaveChanges();
+
+                result = true;
+            }
+
+            return result;
+        }
 
         //Login services methods------------------------------------------------------------------------------------------------------------------------
 
 
         private ResourceManager resourceManager = new ResourceManager("ExceptionMessages.es-MX", Assembly.GetExecutingAssembly());
+
         public bool IsLogged(Player player)
         {
             bool result = false;
@@ -216,7 +315,7 @@ namespace UNO_Server
             {
                 result = player.isLogged;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -274,45 +373,49 @@ namespace UNO_Server
 
         public void Login(string username, string password)
         {
-            bool result = false;
+            int result = 0;
             Player player = null;
             DataManager dataManager = new DataManager();
+            const int SUCCEDED = 1, INCORRECT_DATA = 2, PLAYER_ALREADY_LOGGED = 3, PLAYER_WITHOUT_VERIFICATION = 4;
 
             try
             {
-                using(UNODBEntities db = new UNODBEntities())
+                using (UNODBEntities db = new UNODBEntities())
                 {
                     try
                     {
                         player = db.Players.Where(a => a.username == username).FirstOrDefault();
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         throw e;
                     }
 
-                    if (player != null && dataManager.VerifyPassword(password, player.password))
+                    if(player != null && dataManager.VerifyPassword(password, player.password))
                     {
                         if(!IsLogged(player))
                         {
-                            if(player.isVerified == true)
+                            if(CheckPlayerVerification(player))
                             {
-                                result = true;
+                                result = SUCCEDED;
 
                                 player.isLogged = true;
 
                                 db.SaveChanges();
                             }
+                            else
+                            {
+                                result = PLAYER_WITHOUT_VERIFICATION;
+                            }
                         }
                         else
                         {
-                            result = false;
-                            throw new PlayerAlreadyLoggedException(resourceManager.GetString("PlayerAlreadyLogged"));
+                            result = PLAYER_ALREADY_LOGGED;
                         }
                     }
-                    else if (player == null)
+                    else
                     {
-                        result = false;
+                        result = INCORRECT_DATA;
                     }
                 }
             }
@@ -339,7 +442,7 @@ namespace UNO_Server
                 return OperationContext.Current.GetCallbackChannel<IPlayerManagerCallback>();
             }
         }
-        
+
     }
 
 

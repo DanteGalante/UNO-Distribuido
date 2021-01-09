@@ -9,7 +9,7 @@ namespace GameExceptions
 {
     public class PlayerAlreadyLoggedException : Exception
     {
-        public PlayerAlreadyLoggedException()
+        public PlayerAlreadyLoggedException() : base("El usuario ya se encuentra logeado")
         {
         }
 

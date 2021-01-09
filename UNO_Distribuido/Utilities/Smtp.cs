@@ -16,9 +16,9 @@ namespace UNO_Server.Utilities
 
             SmtpClient smtpClient = new SmtpClient();
 
-            smtpClient.Host = "gmail.com";
-            smtpClient.Port = 2525;
-            smtpClient.EnableSsl = false;
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential("unogame.lis@gmail.com", "UnoLis18012181");
 

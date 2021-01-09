@@ -53,7 +53,7 @@
     <Property Name="idPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="lastnames" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="avatarImage" Type="varbinary" MaxLength="500" />
