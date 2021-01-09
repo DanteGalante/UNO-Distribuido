@@ -20,6 +20,6 @@ namespace UNO_Contracts
     public interface ILoginServicesCallback
     {
         [OperationContract]
-        void LoginVerification(bool result);
+        void LoginVerification(int result);
     }
 }

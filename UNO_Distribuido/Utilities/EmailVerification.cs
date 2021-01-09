@@ -20,8 +20,12 @@ namespace UNO_Server.Utilities
             MailMessage email = new MailMessage();
             email.To.Add(playerEmail);
             email.From = new MailAddress("unogame.lis@gmail.com");
+            /*
             email.Subject = emailResourceManager.GetString("Subject");
             email.Body = emailResourceManager.GetString("Body") + token;
+            */
+            email.Subject = "Codigo de verificacion";
+            email.Body = "Codigo: " + token;
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
 
