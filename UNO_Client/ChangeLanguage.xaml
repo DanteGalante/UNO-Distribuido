@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UNO_Client"
+        xmlns:Lang="clr-namespace:UNO_Client.Properties"
         mc:Ignorable="d"
-        xmlns:lang ="clr-namespace:UNO_Client.Properties"
+
         Title="ChangeLanguage" Height="450" Width="550">
     <Grid Margin="0,0,2,0">
         <Grid.Background>
@@ -14,10 +15,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="{x:Static lang:Language_en.LbChooseLan}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="204,47,0,0"/>
-        <Button Name="btn_Back" Content="{x:Static lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="225,320,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
-        <Button Name="Btn_English" Content="{x:Static lang:Language_en.BtnEnglish}" HorizontalAlignment="Left" Margin="125,220,0,0" VerticalAlignment="Top" Width="75" Click="Btn_English_Click"/>
-        <Button Name="Btn_Spanish" Content="{x:Static lang:Language_en.BtnSpanish}" HorizontalAlignment="Left" Margin="330,220,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Spanish_Click"/>
+        <Label Content="{x:Static Lang:Language_en.LbChooseLan}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="204,47,0,0"/>
+        <Button Name="btn_Back" Content="{x:Static Lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="225,320,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
+        <Button Name="Btn_English" Content="{x:Static Lang:Language_en.BtnEnglish}" HorizontalAlignment="Left" Margin="125,220,0,0" VerticalAlignment="Top" Width="75" Click="Btn_English_Click"/>
+        <Button Name="Btn_Spanish" Content="{x:Static Lang:Language_en.BtnSpanish}" HorizontalAlignment="Left" Margin="330,220,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Spanish_Click"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="75" Margin="95,120,0,0" VerticalAlignment="Top" Width="130">
             <Border.Background>
                 <ImageBrush ImageSource="flag_English.png" Stretch="Uniform"/>

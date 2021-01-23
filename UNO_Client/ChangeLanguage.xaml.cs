@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using System.Globalization;
 
-
 namespace UNO_Client
 {
     /// <summary>
@@ -30,13 +29,13 @@ namespace UNO_Client
         }
 
         private void Btn_English_Click(object sender, RoutedEventArgs e)
-        {  
-        
+        {          
+
         }
 
         private void Btn_Spanish_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)

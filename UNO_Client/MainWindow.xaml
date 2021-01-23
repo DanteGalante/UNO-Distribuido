@@ -4,17 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UNO_Client"
+        xmlns:Lang="clr-namespace:UNO_Client.Properties"
         mc:Ignorable="d"
-        xmlns:lang ="clr-namespace:UNO_Client.Properties"
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="fondoNegro.jpg"/>
         </Grid.Background>
-        <Button x:Name="btn_Play" Content="{x:Static lang:Language_en.BtnStart}" HorizontalAlignment="Left" Margin="338,200,0,0" VerticalAlignment="Top" Width="89" Click="Btn_Play_Click"/>
-        <Button x:Name="btn_Settings" Content="{x:Static lang:Language_en.BtnSettings}" HorizontalAlignment="Left" Margin="329,265,0,0" VerticalAlignment="Top" Width="108" Click="btn_Settings_Click"/>
-        <Button x:Name="btn_Exit" Content= "{x:Static lang:Language_en.BtnExit}" HorizontalAlignment="Left" Margin="338,330,0,0" VerticalAlignment="Top" Width="89" Click="Btn_Exit_Click"/>
+        <Button x:Name="btn_Play" Content="{x:Static Lang:Language_en.BtnStart}" HorizontalAlignment="Left" Margin="338,200,0,0" VerticalAlignment="Top" Width="89" Click="Btn_Play_Click"/>
+        <Button x:Name="btn_Settings" Content="{x:Static Lang:Language_en.BtnSettings}" HorizontalAlignment="Left" Margin="329,265,0,0" VerticalAlignment="Top" Width="108" Click="btn_Settings_Click"/>
+        <Button x:Name="btn_Exit" Content= "{x:Static Lang:Language_en.BtnExit}" HorizontalAlignment="Left" Margin="338,330,0,0" VerticalAlignment="Top" Width="89" Click="Btn_Exit_Click"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="280,20,0,0" Width="215" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Cursor="SizeNWSE">
             <Border.Background>
                 <ImageBrush ImageSource="UNOlogo.png" Stretch="UniformToFill"/>

@@ -233,9 +233,6 @@
     <Resource Include="fondoNegro.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Scorers.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="UNOlogo.png" />
   </ItemGroup>
   <ItemGroup>

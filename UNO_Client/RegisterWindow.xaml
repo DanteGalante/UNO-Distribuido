@@ -31,7 +31,7 @@
         <TextBox x:Name="tb_Email" HorizontalAlignment="Left" Height="23" Margin="197,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
         <Button x:Name="btn_RegisterNewUser" Content="{x:Static lang:Language_en.btn_RegisterNewUser}" HorizontalAlignment="Left" Margin="287,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_RegisterNewUser_Click"/>
         <Button x:Name="btn_Back" Content="{x:Static lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="117,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
-        <Label x:Name="lb_RegistrationError" Content="" HorizontalAlignment="Left" Margin="93,67,0,0" VerticalAlignment="Top" Width="294" Background="White" Foreground="Red"/>
+        <Label x:Name="lb_RegistrationError" Content="" HorizontalAlignment="Left" Margin="93,67,0,0" VerticalAlignment="Top" Width="294" Foreground="Red"/>
         <Label Content="{x:Static lang:Language_en.LbAllFields}" Foreground="White" HorizontalAlignment="Left" Margin="163,49,0,0" VerticalAlignment="Top" Height="29" Width="199"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,198,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,246,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
