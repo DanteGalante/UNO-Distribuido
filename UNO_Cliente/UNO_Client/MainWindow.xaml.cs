@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,9 +33,20 @@ namespace UNO_Client
             this.Close();
         }
 
+        private void btn_Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Owner = this;
+            this.Hide();
+            settings.ShowDialog();
+            this.Close();
+
+        }
+
         private void Btn_Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
     }
 }
+
