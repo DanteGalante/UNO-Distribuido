@@ -40,3 +40,14 @@ D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.csproj.CoreCompileInputs.cache
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.exe
 D:\Documentos\0.0 TAREA\5o semestre\Tecnologías para la construcción\Proyecto\Git\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.pdb
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.csprojAssemblyReference.cache
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\GameMainMenuWindow.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\LoginWindow.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\MainWindow.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\RegisterWindow.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\VerificationWindow.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\App.g.cs
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client_MarkupCompile.cache
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client_MarkupCompile.lref
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.exe
+C:\Users\AlanM\Source\Repos\DanteGalante\UNO-Distribuido\UNO_Cliente\UNO_Client\obj\Debug\UNO_Client.pdb
