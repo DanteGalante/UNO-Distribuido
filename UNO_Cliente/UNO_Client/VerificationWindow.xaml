@@ -9,7 +9,7 @@
         Title="VerificationWindow" Height="249" Width="396.727">
     <Grid Margin="0,0,2,0">
         <Grid.Background>
-            <ImageBrush ImageSource="fondoNegro.jpg"/>
+            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
         </Grid.Background>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="49,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289"/>
         <Label Content="{x:Static lang:Language_en.LbVerification}" Foreground="White" HorizontalAlignment="Left" Margin="49,70,0,0" VerticalAlignment="Top"/>
