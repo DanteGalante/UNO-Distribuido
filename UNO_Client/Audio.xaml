@@ -8,7 +8,7 @@
         Title="Audio" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="fondoNegro.jpg"/>
+            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
         </Grid.Background>
         <Button Name="Btn_Restore" Content="Restore Defaults" HorizontalAlignment="Left" Margin="305,295,0,0" VerticalAlignment="Top" Width="100"/>
         <Button Name="Btn_Done" Content="Done" HorizontalAlignment="Left" Margin="40,55,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Done_Click"/>

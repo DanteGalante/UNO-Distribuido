@@ -10,7 +10,7 @@
         Title="ReportPlayer" Height="450" Width="400">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="fondoNegro.jpg"/>
+            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
         </Grid.Background>
         <CheckBox Content="{x:Static Lang:Language_en.CB_NegativeActtitude}" Foreground="White" HorizontalAlignment="Left" Margin="46,75,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="{x:Static Lang:Language_en.CB_VerbalAbuse}" Foreground="White" HorizontalAlignment="Left" Margin="46,141,0,0" VerticalAlignment="Top"/>

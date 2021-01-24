@@ -224,19 +224,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="flag_English.png" />
+    <Resource Include="RecursosDeImagen\flag_English.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="flag_Spain-min.jpg" />
+    <Resource Include="RecursosDeImagen\flag_Spain-min.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fondoNegro.jpg" />
+    <Resource Include="RecursosDeImagen\fondoNegro.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UNOlogo.png" />
+    <Resource Include="RecursosDeImagen\UNOlogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon_eye.png" />
+    <Resource Include="RecursosDeImagen\icon_eye.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

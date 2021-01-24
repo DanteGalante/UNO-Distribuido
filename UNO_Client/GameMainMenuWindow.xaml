@@ -10,7 +10,7 @@
         Title="GameMainMenuWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="fondoNegro.jpg"/>
+            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
         </Grid.Background>
         <Button Content="{x:Static Lang:Language_en.Btn_createRoom}" HorizontalAlignment="Left" Margin="335,114,0,0" VerticalAlignment="Top" Width="92" Click="Btn_CreateRoom"/>
         <Button Content="{x:Static Lang:Language_en.Btn_Join}" HorizontalAlignment="Left" Margin="335,163,0,0" VerticalAlignment="Top" Width="92" Click="Btn_Join"/>
