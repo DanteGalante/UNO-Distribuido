@@ -10,7 +10,7 @@
         ">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="fondoNegro.jpg"/>
+            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
         </Grid.Background>
         <Label Content="{x:Static lang:Language_en.LbRegisterNewUser}" Foreground="White" HorizontalAlignment="Left" Margin="197,21,0,0" VerticalAlignment="Top"/>
         <Label Content="{x:Static lang:Language_en.LbUserName}" Foreground="White" HorizontalAlignment="Left" Margin="102,92,0,0" VerticalAlignment="Top"/>
@@ -23,7 +23,7 @@
         <PasswordBox x:Name="pb_Password" HorizontalAlignment="Left" Margin="197,145,0,0" VerticalAlignment="Top" Height="23" Width="120"/>
         <Button Content="" HorizontalAlignment="Left" Margin="328,146,0,0" VerticalAlignment="Top" Width="34" Click="Button_Click_1" Height="22">
             <Button.Background>
-                <ImageBrush ImageSource="icon_eye.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="RecursosDeImagen/icon_eye.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="197,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
