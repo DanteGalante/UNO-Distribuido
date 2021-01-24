@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -55,6 +55,14 @@ namespace UNO_Client
                 Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
                 lb_LoginError.Content = "Error en la conexion con el servidor";
             }
+        }
+
+        private void Btn_Password_Recovery(object sender, RoutedEventArgs e)
+        {
+            RecoverPassword recoverPassword = new RecoverPassword();
+            recoverPassword.Owner = this;
+            this.Hide();
+            recoverPassword.ShowDialog();
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
