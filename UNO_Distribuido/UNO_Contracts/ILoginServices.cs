@@ -8,18 +8,12 @@ using UNO_DB;
 
 namespace UNO_Contracts
 {
-    [ServiceContract(CallbackContract = typeof(ILoginServicesCallback))]
+    [ServiceContract]
     public interface ILoginServices
     {
-        [OperationContract(IsOneWay = true)]
-        void Login(string username, string password); //Hay que cifrar las contraseñas
+        [OperationContract]
+        int Login(string username, string password); //Hay que cifrar las contraseñas
         [OperationContract]
         bool IsLogged(Player player);
-    }
-    
-    public interface ILoginServicesCallback
-    {
-        [OperationContract]
-        void LoginVerification(int result);
     }
 }

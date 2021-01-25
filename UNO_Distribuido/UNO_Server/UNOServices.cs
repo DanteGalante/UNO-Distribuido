@@ -74,7 +74,7 @@ namespace UNO_Server
             return response;
         }
 
-        public void GetAllPlayers()
+        public List<Player> GetAllPlayers()
         {
             List<Player> players = null;
 
@@ -89,7 +89,7 @@ namespace UNO_Server
             {
                 throw e;
             }
-            PlayerCallback.GetPlayersResponse(players);
+            return players;
         }
 
         public bool ModifyPlayer(Player player, Player newPlayer)
@@ -134,7 +134,7 @@ namespace UNO_Server
             return playerSearched;
         }
 
-        public void RegisterPlayer(Player newPlayer)
+        public int RegisterPlayer(Player newPlayer)
         {
             int result = 0;
             string token = "";
@@ -189,7 +189,7 @@ namespace UNO_Server
                 throw e;
             }
 
-            PlayerCallback.VerifyPlayerRegistration(result, newPlayer.username);
+            return result;
         }
         public int PlayerAlreadyExist(string username, string email)
         {
@@ -222,28 +222,6 @@ namespace UNO_Server
 
             return result;
         }
-        [Obsolete]
-        public bool SetPassword(Player player, string password)
-        {
-            DataManager dataManager = new DataManager();
-            string hashedPassword = dataManager.EncryptPassword(password);
-
-            try
-            {
-                using (UNODBEntities db = new UNODBEntities())
-                {
-                    player.password = hashedPassword;
-
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
-
-            return true;
-        }
         
         public bool CheckPlayerVerification(Player player)
         {
@@ -253,8 +231,8 @@ namespace UNO_Server
 
             return result;
         }
-
-        public bool VerifyPlayer(string username)
+        /*
+        public bool VerifyPlayer(string username, string token)
         {
             bool result = false;
             Player playerToVerify = null;
@@ -266,8 +244,11 @@ namespace UNO_Server
                     playerToVerify = SearchPlayer(username);
                     if (playerToVerify != null)
                     {
-                        playerToVerify.isVerified = true;
-                        result = true;
+                        if(playerToVerify.verificationToken == token)
+                        {
+                            playerToVerify.isVerified = true;
+                            result = true;
+                        }
                         db.SaveChanges();
                     }
                 }
@@ -279,11 +260,39 @@ namespace UNO_Server
 
             return result;
         }
+        */
+        public bool VerifyPlayer(string username, string token)
+        {
+            bool result = false;
+            Player playerToVerify = null;
 
+            try
+            {
+                using (UNODBEntities db = new UNODBEntities())
+                {
+                    playerToVerify = db.Players.SingleOrDefault(a => a.username == username);
+                    if (playerToVerify != null)
+                    {
+                        if (playerToVerify.verificationToken == token)
+                        {
+                            playerToVerify.isVerified = true;
+                            result = true;
+                        }
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return result;
+        }
         public bool ChangePlayerToken(string username, string newToken)
         {
             bool result = false;
-
+            /*
             using (UNODBEntities db = new UNODBEntities())
             {
                 Player player = SearchPlayer(username);
@@ -298,7 +307,30 @@ namespace UNO_Server
 
                 result = true;
             }
+            */
 
+            try
+            {
+                using (UNODBEntities db = new UNODBEntities())
+                {
+                    Player player = db.Players.SingleOrDefault(a => a.username == username);
+                    
+                    Console.WriteLine("Old verification token: " + player.verificationToken);
+
+                    player.verificationToken = newToken;
+
+                    Console.WriteLine("New verification token: " + player.verificationToken);
+
+                    db.SaveChanges();
+
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
             return result;
         }
 
@@ -371,7 +403,7 @@ namespace UNO_Server
         }
         */
 
-        public void Login(string username, string password)
+        public int Login(string username, string password)
         {
             int result = 0;
             Player player = null;
@@ -434,17 +466,5 @@ namespace UNO_Server
                 return OperationContext.Current.GetCallbackChannel<ILoginServicesCallback>();
             }
         }
-
-        IPlayerManagerCallback PlayerCallback
-        {
-            get
-            {
-                return OperationContext.Current.GetCallbackChannel<IPlayerManagerCallback>();
-            }
-        }
-
     }
-
-
-
 }

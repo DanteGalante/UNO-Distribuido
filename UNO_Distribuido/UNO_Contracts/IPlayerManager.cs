@@ -8,7 +8,7 @@ using UNO_DB;
 
 namespace UNO_Contracts
 {
-    [ServiceContract(CallbackContract = typeof(IPlayerManagerCallback))]
+    [ServiceContract]
     public interface IPlayerManager
     {
         [OperationContract]
@@ -22,20 +22,12 @@ namespace UNO_Contracts
         [OperationContract]
         bool ModifyPlayer(Player player, Player newPlayer);
         [OperationContract]
-        void GetAllPlayers();
-        [OperationContract(IsOneWay = true)]
-        void RegisterPlayer(Player newPlayer);
+        List<Player> GetAllPlayers();
+        [OperationContract]
+        int RegisterPlayer(Player newPlayer);
         [OperationContract]
         bool CheckPlayerVerification(Player player);
         [OperationContract]
-        bool VerifyPlayer(string username);
-    }
-
-    public interface IPlayerManagerCallback
-    {
-        [OperationContract]
-        void GetPlayersResponse(List<Player> players);
-        [OperationContract]
-        void VerifyPlayerRegistration(int response, string username);
+        bool VerifyPlayer(string username, string token);
     }
 }
