@@ -1,9 +1,14 @@
-﻿<Application x:Class="UNO_Client.App"
+<Application x:Class="UNO_Client.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UNO_Client"
+             xmlns:lang="clr-namespace:UNO_Client.Languages"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
-         
+        <ObjectDataProvider x:Key="IdiomasRes" 
+                            ObjectType="{x:Type lang:WrapperLanguage}" 
+                            MethodName="GetResourceInstance">
+        </ObjectDataProvider>
     </Application.Resources>
 </Application>
