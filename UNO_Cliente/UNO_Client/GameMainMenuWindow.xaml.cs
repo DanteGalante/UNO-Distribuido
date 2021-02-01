@@ -24,15 +24,6 @@ namespace UNO_Client
             InitializeComponent();
         }
 
-        private void Btn_Scorers(object sender, RoutedEventArgs e)
-        {
-            BestScorers bestScorers = new BestScorers();
-            bestScorers.Owner = this;
-            this.Hide();
-            bestScorers.ShowDialog();
-            this.Close();
-        }
-
         private void Btn_CreateRoom(object sender, RoutedEventArgs e)
         {
             
@@ -43,11 +34,51 @@ namespace UNO_Client
          
         }
 
-        private void Btn_Back(object sender, RoutedEventArgs e)
+        private void Btn_Scorers(object sender, RoutedEventArgs e)
         {
+            BestScorers bestScorers = new BestScorers
+            {
+                Owner = this
+            };
             this.Hide();
-            this.Owner.ShowDialog();
+            bestScorers.ShowDialog();
+            this.Close();
         }
+        
+        private void Btn_Report_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPlayer reportPlayer = new ReportPlayer
+            {
+                Owner = this
+            };
+            this.Hide();
+            reportPlayer.ShowDialog();
+            this.Close();
+        }
+
+        private void Btn_ChangePassword(object sender, RoutedEventArgs e)
+        {
+            ChangePassword changePassword = new ChangePassword
+            {
+                Owner = this
+            };
+            this.Hide();
+            changePassword.ShowDialog();
+            this.Close();
+        }
+
+        private void Btn_Back(object sender, RoutedEventArgs e)
+        { 
+            LoginWindow loginWindow = new LoginWindow
+            {
+                Owner = this
+            };
+            this.Hide();
+            loginWindow.ShowDialog();
+            this.Close();
+        }
+
+        
     }
 
 
