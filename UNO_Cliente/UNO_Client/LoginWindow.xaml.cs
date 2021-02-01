@@ -1,28 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using UNO_Client.Proxy;
-
 namespace UNO_Client
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     [CallbackBehavior(UseSynchronizationContext = false)]
-    public partial class LoginWindow : Window, ILoginServicesCallback
+    public partial class LoginWindow : Window
     {
         public LoginWindow()
         {
@@ -31,36 +16,63 @@ namespace UNO_Client
 
         private void Btn_Register_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.Owner = this;
+            RegisterWindow registerWindow = new RegisterWindow
+            {
+                Owner = this
+            };
             this.Hide();
             registerWindow.ShowDialog();
         }
 
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
         {
-            InstanceContext context = new InstanceContext(this);
-            Proxy.LoginServicesClient client = new Proxy.LoginServicesClient(context);
-            try
+            if (tb_Username.Text != "" && pb_Password.Password != "")
             {
-                client.Login(tb_Username.Text, pb_Password.Password);
+                int result;
+                
+                InstanceContext context = new InstanceContext(this);
+                Proxy.LoginServicesClient client = new Proxy.LoginServicesClient();
+                try
+                {
+                    result = client.Login(tb_Username.Text, pb_Password.Password);
+                    LoginVerification(result);
+                }
+                catch (EndpointNotFoundException exception)
+                {
+                    Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                    MessageConnection message01 = new MessageConnection
+                    {
+                        Owner = this
+                    };
+                    message01.ShowDialog();
+                }
+                catch (TimeoutException exception)
+                {
+                    Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
+                    MessageConnection message01 = new MessageConnection
+                    {
+                        Owner = this
+                    };
+                    message01.ShowDialog();
+                }
             }
-            catch(EndpointNotFoundException exception)
+            else
             {
-                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
-                lb_LoginError.Content = "Error en la conexión con el servidor";
-            }
-            catch(TimeoutException exception)
-            {
-                Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
-                lb_LoginError.Content = "Error en la conexion con el servidor";
+                MessageFields messageFields = new MessageFields
+                {
+                    Owner = this
+                };
+                messageFields.ShowDialog();
+                
             }
         }
 
         private void Btn_Password_Recovery(object sender, RoutedEventArgs e)
         {
-            RecoverPassword recoverPassword = new RecoverPassword();
-            recoverPassword.Owner = this;
+            RecoverPassword recoverPassword = new RecoverPassword
+            {
+                Owner = this
+            };
             this.Hide();
             recoverPassword.ShowDialog();
         }
@@ -89,7 +101,12 @@ namespace UNO_Client
                 case 2:
                     this.Dispatcher.Invoke(() =>
                     {
-                        lb_LoginError.Content = "La contrasenia o el nombre de usuario son incorrectos";
+                        lb_LoginError.Content = "";
+                        MessageRecoveryPasswordError messageRecoveryPasswordError = new MessageRecoveryPasswordError
+                        {
+                            Owner = this
+                        };
+                        messageRecoveryPasswordError.ShowDialog();
                     });
                     break;
                 case 3:
@@ -105,33 +122,6 @@ namespace UNO_Client
                     });
                     break;
             }
-            
-            /*
-            if(result == true)
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (!userIsLogged)
-                    {
-                        lb_LoginError.Content = "";
-                        GameMainMenuWindow gameMainMenuWindow = new GameMainMenuWindow();
-                        this.Hide();
-                        gameMainMenuWindow.ShowDialog();
-                    }
-                    else
-                    {
-                        lb_LoginError.Content = "El usuario tiene una sesión iniciada";
-                    }
-                });
-            }
-            else
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    lb_LoginError.Content = "Nombre de usuario o contraseña incorrectos";
-                });
-            }
-            */
         }
     }
 }
