@@ -26,17 +26,21 @@ namespace UNO_Client
 
         private void Btn_Play_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Owner = this;
+            LoginWindow loginWindow = new LoginWindow
+            {
+                Owner = this
+            };
             this.Hide();
             loginWindow.ShowDialog();
             this.Close();
         }
 
-        private void btn_Settings_Click(object sender, RoutedEventArgs e)
+        private void Btn_Settings_Click(object sender, RoutedEventArgs e)
         {
-            Settings settings = new Settings();
-            settings.Owner = this;
+            Settings settings = new Settings
+            {
+                Owner = this
+            };
             this.Hide();
             settings.ShowDialog();
             this.Close();
