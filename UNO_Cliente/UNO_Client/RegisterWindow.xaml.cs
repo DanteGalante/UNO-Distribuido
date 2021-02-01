@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ServiceModel;
 using System.Windows;
 using UNO_Client.Proxy;
@@ -9,7 +9,7 @@ namespace UNO_Client
     /// Interaction logic for RegisterWindow.xaml
     /// </summary>
     [CallbackBehavior(UseSynchronizationContext = false)]
-    public partial class RegisterWindow : Window, IPlayerManagerCallback
+    public partial class RegisterWindow : Window
     {
         public RegisterWindow()
         {
@@ -19,34 +19,109 @@ namespace UNO_Client
         //Work in progress
         private void Btn_RegisterNewUser_Click(object sender, RoutedEventArgs e)
         {
-            InstanceContext instanceContext = new InstanceContext(this);
-            Proxy.PlayerManagerClient client = new PlayerManagerClient(instanceContext);
+            if (tb_Username.Text != "" && pb_Password.Password != "" && tb_Name.Text != "" && tb_LastName.Text != "" && tb_Email.Text != "")
+            {
+                InstanceContext instanceContext = new InstanceContext(this);
+                Proxy.PlayerManagerClient client = new PlayerManagerClient();
+                int response = 0;
 
-            Player newPlayer = new Player();
-            newPlayer.username = tb_Username.Text;
-            newPlayer.password = pb_Password.Password;
-            newPlayer.name = tb_Name.Text;
-            newPlayer.lastnames = tb_LastName.Text;
-            //newPlayer.avatarImage =
-            newPlayer.isBanned = false;
-            newPlayer.verificationToken = "";
-            newPlayer.isLogged = false;
-            newPlayer.isVerified = false;
-            newPlayer.email = tb_Email.Text;
 
-            try
-            {
-                client.RegisterPlayer(newPlayer);
+                Player newPlayer = new Player
+                {
+                    username = tb_Username.Text,
+                    password = pb_Password.Password,
+                    name = tb_Name.Text,
+                    lastnames = tb_LastName.Text,
+                    isBanned = false,
+                    verificationToken = "",
+                    isLogged = false,
+                    isVerified = false,
+                    email = tb_Email.Text,
+                    points = 0,
+                    AccumulatedReports = 0                    
+                };
+
+                try
+                {
+                    response = client.RegisterPlayer(newPlayer);
+
+                    VerificationWindow verificationWindow = null;
+
+                    switch (response)
+                    {
+                        case 1:
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                MessageRegister messageRegister = new MessageRegister
+                                {
+                                    Owner = this
+                                };
+                                messageRegister.ShowDialog();
+
+                                lb_RegistrationError.Content = "";
+                                verificationWindow = new VerificationWindow(newPlayer.username)
+                                {
+                                    Owner = this
+                                };
+                                this.Hide();
+                                verificationWindow.ShowDialog();
+                            });
+                            break;
+                        case 2:
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                lb_RegistrationError.Content = "El jugador ya esta registrado en el sistema";
+                            });
+                            break;
+                        case 3:
+                            //Cuando llega al dispatcher se traba por alguna razon
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                lb_RegistrationError.Content = "";
+                                verificationWindow = new VerificationWindow(newPlayer.username);
+                                verificationWindow.ShowDialog();
+                            });
+                            break;
+                        case 4:
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                lb_RegistrationError.Content = "El correo electronico introducido no esta disponible";
+                            });
+                            break;
+                        case 5:
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                lb_RegistrationError.Content = "El nombre de usuario introducido no esta disponible";
+                            });
+                            break;
+                    }
+                }
+                catch (EndpointNotFoundException exception)
+                {
+                    Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
+                    MessageConnection message01 = new MessageConnection
+                    {
+                        Owner = this
+                    };
+                    message01.ShowDialog();
+                }  
+                catch (TimeoutException exception)
+                {
+                    Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
+                    MessageConnection message01 = new MessageConnection
+                    {
+                        Owner = this
+                    };
+                    message01.ShowDialog();
+                }
             }
-            catch(EndpointNotFoundException exception)
+            else
             {
-                Console.WriteLine("No se pudo realizar la conexión con el servidor \n" + exception);
-                lb_RegistrationError.Content = "Error en la conexión con el servidor";
-            }
-            catch(TimeoutException exception)
-            {
-                Console.WriteLine("No se pudo realizar la conexion con el servidor por tiempo \n" + exception);
-                lb_RegistrationError.Content = "Error en la conexion con el servidor";
+                MessageFields messageFields = new MessageFields
+                {
+                    Owner = this
+                };
+                messageFields.ShowDialog();
             }
         }
 
@@ -56,73 +131,7 @@ namespace UNO_Client
             this.Owner.ShowDialog();
         }
 
-        public void GetPlayersResponse(Player[] players)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void VerifyPlayerRegistration(int response, string username)
-        {
-            VerificationWindow verificationWindow = null;
-
-            switch (response)
-            {
-                case 1:
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lb_RegistrationError.Content = "";
-                        verificationWindow = new VerificationWindow(username);
-                        verificationWindow.Owner = this;
-                        this.Hide();
-                        verificationWindow.ShowDialog();
-                    });
-                    break;
-                case 2:
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lb_RegistrationError.Content = "El jugador ya esta registrado en el sistema";
-                    });
-                    break;
-                case 3:
-                    //Cuando llega al dispatcher se traba por alguna razon
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lb_RegistrationError.Content = "";
-                        verificationWindow = new VerificationWindow(username);
-                        verificationWindow.Owner = this;
-                        this.Hide();
-                        verificationWindow.ShowDialog();
-                    });
-                    break;
-                case 4:
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lb_RegistrationError.Content = "El correo electronico introducido no esta disponible";
-                    });
-                    break;
-                case 5:
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        lb_RegistrationError.Content = "El nombre de usuario introducido no esta disponible";
-                    });
-                    break;
-            }
-
-            /*
-            if(response == true)
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    lb_RegistrationError.Content = "";
-                    VerificationWindow verificationWindow = new VerificationWindow();
-                    this.Hide();
-                    verificationWindow.ShowDialog();
-                });
-            }
-            */
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Hide_Click(object sender, RoutedEventArgs e)
         {
             if (pb_Password.IsVisible)
             {
@@ -139,11 +148,6 @@ namespace UNO_Client
                 pb_Password.Password = tb_Password.Text;
                 tb_Password.Text = "";
             }
-        }
-
-        private void btn_LoadImage_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
