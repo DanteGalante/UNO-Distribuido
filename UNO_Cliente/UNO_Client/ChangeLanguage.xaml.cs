@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using System.Globalization;
 
+
 namespace UNO_Client
 {
     /// <summary>
@@ -24,18 +25,32 @@ namespace UNO_Client
     {
         public ChangeLanguage()
         {
-            InitializeComponent();
-
+            InitializeComponent();            
         }
 
         private void Btn_English_Click(object sender, RoutedEventArgs e)
-        {          
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            Languages.WrapperLanguage.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
 
+            MessageChangeLanguage messageChangeLanguage = new MessageChangeLanguage
+            {
+                Owner = this
+            };
+            messageChangeLanguage.ShowDialog();
         }
 
+ 
         private void Btn_Spanish_Click(object sender, RoutedEventArgs e)
         {
-          
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es");
+            Languages.WrapperLanguage.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
+
+            MessageChangeLanguage messageChangeLanguage = new MessageChangeLanguage
+            {
+                Owner = this
+            };
+            messageChangeLanguage.ShowDialog();
         }
 
         private void Btn_Back_Click(object sender, RoutedEventArgs e)
