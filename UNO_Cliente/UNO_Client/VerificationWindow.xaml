@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UNO_Client"
         mc:Ignorable="d"
-        xmlns:lang="clr-namespace:UNO_Client.Properties"
+        
         Title="VerificationWindow" Height="249" Width="396.727">
     <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
+            <ImageBrush ImageSource="ResourcesOfImage/fondoNegro.jpg"/>
         </Grid.Background>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="49,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289"/>
-        <Label Content="{x:Static lang:Language_en.LbVerification}" Foreground="White" HorizontalAlignment="Left" Margin="49,70,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Btn_Verify" Content="{x:Static lang:Language_en.Btn_Verification}" HorizontalAlignment="Left" Margin="263,161,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Verify_Click"/>
-        <Button x:Name="Btn_Back" Content="{x:Static lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="183,161,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
+        <TextBox x:Name="tb_VerificationToken" HorizontalAlignment="Left" Height="23" Margin="49,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Grid.ColumnSpan="2"/>
+        <Label Content="{Binding LbVerification, Source={StaticResource IdiomasRes}}" Foreground="White" HorizontalAlignment="Left" Margin="49,70,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Verify" Content="{Binding Btn_Verification, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="145.646,161,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Verify_Click" Grid.Column="1"/>
+        <Button x:Name="Btn_Back" Content="{Binding BtnBack, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="65.646,161,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click" Grid.Column="1"/>
+        <Label x:Name="lb_VerificationError" HorizontalAlignment="Left" Margin="49,124,0,0" Foreground="Red" VerticalAlignment="Top" Width="289" Height="22" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
