@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UNO_Client"
         mc:Ignorable="d"
-        xmlns:Lang="clr-namespace:UNO_Client.Properties"
         
-        Title="GameMainMenuWindow" Height="450" Width="800">
-   <Grid>
+        Title="GameMainMenuWindow" Height="450" Width="400">
+    <Grid>
+
         <Grid.Background>
-            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
+            <ImageBrush ImageSource="ResourcesOfImage/fondoNegro.jpg"/>
         </Grid.Background>
-    
-        <Button Content="{x:Static Lang:Language_en.Btn_createRoom}" HorizontalAlignment="Left" Margin="335,114,0,0" VerticalAlignment="Top" Width="92" Click="Btn_CreateRoom"/>
-        <Button Content="{x:Static Lang:Language_en.Btn_Join}" HorizontalAlignment="Left" Margin="335,163,0,0" VerticalAlignment="Top" Width="92" Click="Btn_Join"/>
-        <Button Content="{x:Static Lang:Language_en.Btn_Scorers}" HorizontalAlignment="Left" Margin="335,206,0,0" VerticalAlignment="Top" Width="92" Click="Btn_Scorers"/>
-        <Button Content="{x:Static Lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="335,286,0,0" VerticalAlignment="Top" Width="92" Click="Btn_Back"/>
+
+        <Button Content="{Binding Btn_createRoom, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="140,60,0,0" VerticalAlignment="Top" Width="121" Click="Btn_CreateRoom"/>
+        <Button Content="{Binding Btn_Join, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="140,110,0,0" VerticalAlignment="Top" Width="121" Click="Btn_Join"/>
+        <Button Content="{Binding Btn_Scorers, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="140,160,0,0" VerticalAlignment="Top" Width="121" Click="Btn_Scorers"/>
+        <Button Content="{Binding BtnReport, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="140,210,0,0" VerticalAlignment="Top" Width="121" Click="Btn_Report_Click"/>
+        <Button Content="{Binding Btn_ChangePassword, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="140,260,0,0" VerticalAlignment="Top" Width="121" Click="Btn_ChangePassword"/>
+        <Button Content="{Binding BtnBack, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="152,360,0,0" VerticalAlignment="Top" Width="92" Click="Btn_Back"/>
 
     </Grid>
 </Window>
+
