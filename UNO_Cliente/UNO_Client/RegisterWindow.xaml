@@ -5,38 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UNO_Client"
         mc:Ignorable="d"
-        xmlns:lang="clr-namespace:UNO_Client.Properties"
-        Title="RegisterWindow" Height="450" Width="500
-        ">
-    <Grid>
+
+        Title="RegisterWindow" Height="450" Width="500">
+
+    <Grid Height="418" MinWidth="22">
         <Grid.Background>
-            <ImageBrush ImageSource="RecursosDeImagen/fondoNegro.jpg"/>
+            <ImageBrush ImageSource="ResourcesOfImage/fondoNegro.jpg"/>
         </Grid.Background>
-        <Label Content="{x:Static lang:Language_en.LbRegisterNewUser}" Foreground="White" HorizontalAlignment="Left" Margin="197,21,0,0" VerticalAlignment="Top"/>
-        <Label Content="{x:Static lang:Language_en.LbUserName}" Foreground="White" HorizontalAlignment="Left" Margin="102,92,0,0" VerticalAlignment="Top"/>
-        <Label Content="{x:Static lang:Language_en.LbPassword}" Foreground="White" HorizontalAlignment="Left" Margin="105,145,0,0" VerticalAlignment="Top"/>
-        <Label Content="{x:Static lang:Language_en.LbName}" Foreground="White" HorizontalAlignment="Left" Margin="111,192,0,0" VerticalAlignment="Top"/>
-        <Label Content="{x:Static lang:Language_en.LbLastName}" Foreground="White" HorizontalAlignment="Left" Margin="102,243,0,0" VerticalAlignment="Top"/>
-        <Label Content="{x:Static lang:Language_en.LbEmail}" Foreground="White" HorizontalAlignment="Right" Margin="0,295,321,0" VerticalAlignment="Top" Width="41"/>
-        <TextBox x:Name="tb_Username" HorizontalAlignment="Left" Height="23" Margin="197,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_Password" HorizontalAlignment="Left" Height="23" Margin="197,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="pb_Password" HorizontalAlignment="Left" Margin="197,145,0,0" VerticalAlignment="Top" Height="23" Width="120"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="328,146,0,0" VerticalAlignment="Top" Width="34" Click="Button_Click_1" Height="22">
+        <Label Content="{Binding LbRegisterNewUser, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="176,12,0,0"  VerticalAlignment="Top" Width="148" HorizontalContentAlignment="Center"/>
+        <Label Content="{Binding LbUserName, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="50,93,0,0" VerticalAlignment="Top" Width="125"/>
+        <Label Content="{Binding LbPassword, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="81,145,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label Content="{Binding LbName, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="90,192,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.348,0.538" Width="85"/>
+        <Label Content="{Binding LbLastName, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="99,245,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="{Binding LbEmail, Source={StaticResource IdiomasRes}}" Foreground="White" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="50,295,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="tb_Username" HorizontalAlignment="Left" Height="23" Margin="197,95,0,0" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="tb_Password" HorizontalAlignment="Left" Height="23" Margin="197,145,0,0"  VerticalAlignment="Top" Width="190"/>
+        <PasswordBox x:Name="pb_Password" HorizontalAlignment="Left" Margin="197,145,0,0" VerticalAlignment="Top" Height="23" Width="190"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="403,145,0,0" VerticalAlignment="Top" Width="34" Click="Hide_Click" Height="22" RenderTransformOrigin="0.176,0.227">
             <Button.Background>
-                <ImageBrush ImageSource="RecursosDeImagen/icon_eye.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ResourcesOfImage/icon_eye.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="197,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_LastName" HorizontalAlignment="Left" Height="23" Margin="197,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tb_Email" HorizontalAlignment="Left" Height="23" Margin="197,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
-        <Button x:Name="btn_RegisterNewUser" Content="{x:Static lang:Language_en.btn_RegisterNewUser}" HorizontalAlignment="Left" Margin="287,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_RegisterNewUser_Click"/>
-        <Button x:Name="btn_Back" Content="{x:Static lang:Language_en.BtnBack}" HorizontalAlignment="Left" Margin="117,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
-        <Label x:Name="lb_RegistrationError" Content="" HorizontalAlignment="Left" Margin="93,67,0,0" VerticalAlignment="Top" Width="294" Foreground="Red"/>
-        <Label Content="{x:Static lang:Language_en.LbAllFields}" Foreground="White" HorizontalAlignment="Left" Margin="163,49,0,0" VerticalAlignment="Top" Height="29" Width="199"/>
+        <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="23" Margin="197,195,0,0" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="tb_LastName" HorizontalAlignment="Left" Height="23" Margin="197,245,0,0" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="tb_Email" HorizontalAlignment="Left" Height="23" Margin="197,295,0,0" VerticalAlignment="Top" Width="190"/>
+        <Button x:Name="btn_RegisterNewUser" Content="{Binding btn_RegisterNewUser, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="347,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_RegisterNewUser_Click"/>
+        <Button x:Name="btn_Back" Content="{Binding BtnBack, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="117,374,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Back_Click"/>
+        <Label x:Name="lb_RegistrationError" Content="" HorizontalAlignment="Left" Margin="93,67,0,0" VerticalAlignment="Top" Width="344" Foreground="Red" HorizontalContentAlignment="Center"/>
+        <Label Content="{Binding LbAllFields, Source={StaticResource IdiomasRes}}" Foreground="White" HorizontalAlignment="Left" Margin="84,43,0,0" VerticalAlignment="Top" Height="29" Width="353" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,198,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,246,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,296,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,148,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
         <Label Content="*" Foreground="Red" HorizontalAlignment="Left" Margin="176,95,0,0" VerticalAlignment="Top" Height="23" Width="16"/>
+
     </Grid>
 </Window>
